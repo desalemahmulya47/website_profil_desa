@@ -1,0 +1,4 @@
+<?php $title='Profil Desa';include 'includes/header.php';$p=row('SELECT * FROM profil_desa LIMIT 1');?>
+<div class="container"><h2 class="judul">Profil Desa <?=s('nama_desa')?></h2><?php foreach(['sejarah'=>'Sejarah Desa','visi'=>'Visi','misi'=>'Misi','geografis'=>'Kondisi Geografis','batas'=>'Batas Wilayah','demografi'=>'Demografi'] as $k=>$l):?><div class="card-desa bg-white p-4 mb-3"><h5 class="text-hijau"><?=$l?></h5><?=nl2br(e($p[$k]??''))?></div><?php endforeach;?>
+<div class="card-desa bg-white p-4 mb-3"><h5 class="text-hijau">Struktur Pemerintahan & Potensi</h5><a href="pemerintahan.php">Lihat Pemerintahan</a> | <a href="potensi.php">Lihat Potensi</a></div><iframe src="<?=s('maps')?>" width="100%" height="320" style="border:0;border-radius:16px"></iframe></div>
+<?php include 'includes/footer.php';?>

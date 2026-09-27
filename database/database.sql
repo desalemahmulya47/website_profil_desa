@@ -1,0 +1,50 @@
+CREATE DATABASE IF NOT EXISTS digital_desa CHARACTER SET utf8mb4;
+USE digital_desa;
+CREATE TABLE roles(id INT AUTO_INCREMENT PRIMARY KEY,nama VARCHAR(30));
+CREATE TABLE users(id INT AUTO_INCREMENT PRIMARY KEY,nama VARCHAR(100),username VARCHAR(50) UNIQUE,password VARCHAR(255),role_id INT,FOREIGN KEY(role_id) REFERENCES roles(id));
+CREATE TABLE kartu_keluarga(id INT AUTO_INCREMENT PRIMARY KEY,no_kk VARCHAR(20),kepala_keluarga VARCHAR(100),alamat TEXT);
+CREATE TABLE rt_rw(id INT AUTO_INCREMENT PRIMARY KEY,dusun VARCHAR(50),rw VARCHAR(5),rt VARCHAR(5),ketua VARCHAR(100));
+CREATE TABLE penduduk(id INT AUTO_INCREMENT PRIMARY KEY,nik VARCHAR(20) UNIQUE,nama VARCHAR(100),jk ENUM('Laki-laki','Perempuan'),tempat_lahir VARCHAR(50),tanggal_lahir DATE,alamat TEXT,pekerjaan VARCHAR(60),pendidikan VARCHAR(40),kk_id INT NULL,FOREIGN KEY(kk_id) REFERENCES kartu_keluarga(id) ON DELETE SET NULL);
+CREATE TABLE perangkat_desa(id INT AUTO_INCREMENT PRIMARY KEY,nama VARCHAR(100),jabatan VARCHAR(60),nip VARCHAR(30),profil TEXT,foto VARCHAR(100));
+CREATE TABLE layanan(id INT AUTO_INCREMENT PRIMARY KEY,nama VARCHAR(100),deskripsi TEXT,template TEXT);
+CREATE TABLE pengajuan_layanan(id INT AUTO_INCREMENT PRIMARY KEY,nomor VARCHAR(30) UNIQUE,layanan_id INT,nama VARCHAR(100),nik VARCHAR(20),hp VARCHAR(20),alamat TEXT,keperluan TEXT,file VARCHAR(100),status ENUM('Diajukan','Diproses','Disetujui','Ditolak','Selesai') DEFAULT 'Diajukan',keterangan TEXT,tanggal DATETIME DEFAULT CURRENT_TIMESTAMP,tanggal_selesai DATE NULL,FOREIGN KEY(layanan_id) REFERENCES layanan(id));
+CREATE TABLE pengaduan(id INT AUTO_INCREMENT PRIMARY KEY,nomor VARCHAR(30) UNIQUE,nama VARCHAR(100),nik VARCHAR(20),hp VARCHAR(20),kategori VARCHAR(50),isi TEXT,lokasi VARCHAR(150),file VARCHAR(100),status ENUM('Baru','Diverifikasi','Diproses','Selesai') DEFAULT 'Baru',tanggal DATETIME DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE kategori_berita(id INT AUTO_INCREMENT PRIMARY KEY,nama VARCHAR(50));
+CREATE TABLE berita(id INT AUTO_INCREMENT PRIMARY KEY,judul VARCHAR(200),kategori_id INT,penulis VARCHAR(60),ringkasan TEXT,isi TEXT,foto VARCHAR(100),headline TINYINT DEFAULT 0,tanggal DATE,FOREIGN KEY(kategori_id) REFERENCES kategori_berita(id));
+CREATE TABLE agenda(id INT AUTO_INCREMENT PRIMARY KEY,judul VARCHAR(150),tanggal DATE,lokasi VARCHAR(100),keterangan TEXT);
+CREATE TABLE galeri(id INT AUTO_INCREMENT PRIMARY KEY,judul VARCHAR(100),kategori VARCHAR(40),foto VARCHAR(100),video_url VARCHAR(255));
+CREATE TABLE potensi_desa(id INT AUTO_INCREMENT PRIMARY KEY,nama VARCHAR(100),jenis VARCHAR(40),deskripsi TEXT,lokasi VARCHAR(100),kontak VARCHAR(50),foto VARCHAR(100));
+CREATE TABLE umkm(id INT AUTO_INCREMENT PRIMARY KEY,nama VARCHAR(100),pemilik VARCHAR(100),jenis_usaha VARCHAR(60),produk VARCHAR(100),kontak VARCHAR(30));
+CREATE TABLE dokumen_desa(id INT AUTO_INCREMENT PRIMARY KEY,judul VARCHAR(150),kategori VARCHAR(40),tahun INT,file VARCHAR(100));
+CREATE TABLE apbdes(id INT AUTO_INCREMENT PRIMARY KEY,tahun INT,uraian VARCHAR(150),jenis ENUM('Pendapatan','Belanja','Pembiayaan'),anggaran BIGINT,realisasi BIGINT);
+CREATE TABLE profil_desa(id INT AUTO_INCREMENT PRIMARY KEY,sejarah TEXT,visi TEXT,misi TEXT,geografis TEXT,batas TEXT,demografi TEXT);
+CREATE TABLE pengaturan(k VARCHAR(50) PRIMARY KEY,v TEXT);
+CREATE TABLE log_aktivitas(id INT AUTO_INCREMENT PRIMARY KEY,user_id INT,aktivitas VARCHAR(100),waktu DATETIME DEFAULT CURRENT_TIMESTAMP);
+INSERT INTO roles(nama)VALUES('super_admin'),('admin_desa'),('kepala_desa'),('masyarakat');
+INSERT INTO users(nama,username,password,role_id)VALUES('Super Admin','admin','$6$OAhWEanLCackhTuJ$CQqMiTPJ3/rRK7jhSNcrLwtvDPWZtmvgPpWDUB8vPB3SP6dO8bhNCgw1lSt4.HKRKuLEn16VTOb5ZGIAQg4.k1',1),('Petugas Desa','petugas','$6$OAhWEanLCackhTuJ$CQqMiTPJ3/rRK7jhSNcrLwtvDPWZtmvgPpWDUB8vPB3SP6dO8bhNCgw1lSt4.HKRKuLEn16VTOb5ZGIAQg4.k1',2),('Kepala Desa','kades','$6$OAhWEanLCackhTuJ$CQqMiTPJ3/rRK7jhSNcrLwtvDPWZtmvgPpWDUB8vPB3SP6dO8bhNCgw1lSt4.HKRKuLEn16VTOb5ZGIAQg4.k1',3);
+INSERT INTO pengaturan VALUES('nama_desa','Desa Lemahmulya'),('kecamatan','Majalaya'),('kabupaten','Karawang'),('provinsi','Jawa Barat'),('alamat','Kantor Desa Lemahmulya, Kec. Majalaya, Kab. Karawang'),('telepon','(0267) 000000'),('email','desa.lemahmulya@example.com'),('jam','Senin-Jumat 08.00-15.00 WIB'),('maps','https://www.google.com/maps?q=Majalaya+Karawang&output=embed'),('facebook','https://facebook.com'),('instagram','https://instagram.com'),('youtube','https://youtube.com'),('stat_penduduk','3250'),('stat_kk','980'),('stat_lk','1650'),('stat_pr','1600'),('stat_dusun','4'),('stat_rt','24'),('stat_rw','8');
+INSERT INTO profil_desa(sejarah,visi,misi,geografis,batas,demografi)VALUES('Sejarah Desa Lemahmulya (isi dari dashboard admin).','Terwujudnya desa yang maju, mandiri, dan sejahtera.','1. Pelayanan transparan\n2. Digitalisasi desa\n3. Pemberdayaan ekonomi','Terletak di Kecamatan Majalaya, Kabupaten Karawang.','Utara: - | Selatan: - | Barat: - | Timur: -','Data demografi diperbarui berkala.');
+INSERT INTO layanan(nama,deskripsi,template)VALUES
+('Surat Keterangan Domisili','Keterangan tempat tinggal warga','Yang bertanda tangan di bawah ini Kepala {desa}, menerangkan bahwa:\n\nNama: {nama}\nNIK: {nik}\nTTL: {ttl}\nPekerjaan: {pekerjaan}\nAlamat: {alamat}\n\nBenar berdomisili di wilayah {desa}, Kecamatan {kecamatan}, Kabupaten {kabupaten}. Surat ini dibuat untuk keperluan: {keperluan}.'),
+('Surat Pengantar','Surat pengantar umum','Kepala {desa} menerangkan bahwa {nama} (NIK {nik}), {alamat}, adalah warga kami dan mohon dibantu untuk keperluan: {keperluan}.'),
+('Surat Keterangan Usaha','Keterangan memiliki usaha','Kepala {desa} menerangkan bahwa {nama} (NIK {nik}), {pekerjaan}, beralamat di {alamat}, memiliki usaha di wilayah kami. Keperluan: {keperluan}.'),
+('Surat Keterangan Tidak Mampu','Keterangan kurang mampu','Kepala {desa} menerangkan bahwa {nama} (NIK {nik}), {alamat}, tergolong keluarga kurang mampu. Keperluan: {keperluan}.'),
+('Surat Keterangan Kelahiran','Keterangan kelahiran','Kepala {desa} menerangkan telah terjadi kelahiran atas nama {nama}, NIK/Ref {nik}, alamat {alamat}. Keperluan: {keperluan}.'),
+('Surat Keterangan Kematian','Keterangan kematian','Kepala {desa} menerangkan bahwa {nama} (NIK {nik}), alamat {alamat}, telah meninggal dunia. Keterangan: {keperluan}.'),
+('Surat Keterangan Belum Menikah','Status belum menikah','Kepala {desa} menerangkan bahwa {nama} (NIK {nik}), {ttl}, {alamat}, berstatus belum menikah. Keperluan: {keperluan}.'),
+('Surat Pengantar SKCK','Pengantar pembuatan SKCK','Kepala {desa} menerangkan bahwa {nama} (NIK {nik}), {alamat}, berkelakuan baik dan mohon dibuatkan SKCK. Keperluan: {keperluan}.'),
+('Surat Keterangan Pindah','Keterangan pindah domisili','Kepala {desa} menerangkan bahwa {nama} (NIK {nik}), {alamat}, akan pindah domisili. Keterangan: {keperluan}.'),
+('Permohonan Administrasi Lainnya','Administrasi lain','Kepala {desa} menerangkan bahwa {nama} (NIK {nik}), {alamat}, mengajukan: {keperluan}.');
+INSERT INTO kartu_keluarga(no_kk,kepala_keluarga,alamat)VALUES('3215010101010001','Ahmad Sopian','Dusun 1 RT 01 RW 01'),('3215010101010002','Dedi Suryadi','Dusun 2 RT 02 RW 01');
+INSERT INTO penduduk(nik,nama,jk,tempat_lahir,tanggal_lahir,alamat,pekerjaan,pendidikan,kk_id)VALUES('3215010101900001','Ahmad Sopian','Laki-laki','Karawang','1990-01-01','Dusun 1 RT 01 RW 01','Petani','SMA',1),('3215010202920002','Siti Aminah','Perempuan','Karawang','1992-02-02','Dusun 1 RT 01 RW 01','Ibu Rumah Tangga','SMP',1),('3215010303850003','Dedi Suryadi','Laki-laki','Majalaya','1985-03-03','Dusun 2 RT 02 RW 01','Wiraswasta','S1',2),('3215010404950004','Rina Marlina','Perempuan','Majalaya','1995-04-04','Dusun 2 RT 02 RW 01','Guru','S1',2),('3215010505000005','Budi Santoso','Laki-laki','Karawang','2000-05-05','Dusun 3 RT 03 RW 02','Buruh','SMA',NULL);
+INSERT INTO rt_rw(dusun,rw,rt,ketua)VALUES('Dusun 1','01','01','Pak Ujang'),('Dusun 2','01','02','Pak Asep');
+INSERT INTO perangkat_desa(nama,jabatan,nip,profil)VALUES('H. Kepala Desa','Kepala Desa','-','Memimpin pemerintahan desa.'),('Sekretaris Desa','Sekretaris Desa','-','Membantu kepala desa di bidang administrasi.'),('Kaur Umum','Kepala Urusan','-','Mengelola urusan umum.'),('Kasi Pelayanan','Kepala Seksi','-','Mengelola pelayanan masyarakat.');
+INSERT INTO kategori_berita(nama)VALUES('Pemerintahan'),('Kegiatan Desa'),('Pembangunan'),('Masyarakat'),('Kesehatan'),('Pendidikan'),('UMKM'),('Pengumuman');
+INSERT INTO berita(judul,kategori_id,penulis,ringkasan,isi,headline,tanggal)VALUES('Peluncuran Website Digital Desa',8,'Admin','Website resmi desa kini hadir.','Masyarakat kini dapat mengajukan surat secara online melalui website Digital Desa.',1,CURDATE()),('Gotong Royong Bersih Desa',2,'Admin','Warga bergotong royong.','Kegiatan gotong royong dilaksanakan bersama seluruh warga.',0,CURDATE());
+INSERT INTO agenda(judul,tanggal,lokasi,keterangan)VALUES('Musyawarah Desa',DATE_ADD(CURDATE(),INTERVAL 7 DAY),'Balai Desa','Pembahasan RKPDes'),('Posyandu',DATE_ADD(CURDATE(),INTERVAL 3 DAY),'Posyandu Melati','Pemeriksaan balita');
+INSERT INTO galeri(judul,kategori,foto,video_url)VALUES('Kegiatan Desa','Kegiatan Desa',NULL,NULL);
+INSERT INTO potensi_desa(nama,jenis,deskripsi,lokasi,kontak)VALUES('Padi Organik','Pertanian','Sawah produktif.','Dusun 1','-'),('Kerajinan Anyaman','Kerajinan','Anyaman bambu.','Dusun 2','-');
+INSERT INTO umkm(nama,pemilik,jenis_usaha,produk,kontak)VALUES('Keripik Bu Siti','Siti Aminah','Makanan','Keripik singkong','08123456789');
+INSERT INTO apbdes(tahun,uraian,jenis,anggaran,realisasi)VALUES(2026,'Dana Desa','Pendapatan',800000000,400000000),(2026,'Pembangunan Jalan','Belanja',300000000,150000000);
+
+CREATE TABLE IF NOT EXISTS banner(id INT AUTO_INCREMENT PRIMARY KEY,judul VARCHAR(150),foto VARCHAR(100),link VARCHAR(255),urutan INT DEFAULT 0,aktif TINYINT DEFAULT 1);

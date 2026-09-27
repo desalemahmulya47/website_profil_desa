@@ -1,0 +1,40 @@
+<?php require '../config/database.php';need(['super_admin','admin_desa','kepala_desa']);$r=$_SESSION['u']['role'];
+$T=[
+'penduduk'=>['Data Penduduk',['nik'=>['NIK','text'],'nama'=>['Nama','text'],'jk'=>['JK','sel:Laki-laki|Perempuan'],'tempat_lahir'=>['Tempat Lahir','text'],'tanggal_lahir'=>['Tgl Lahir','date'],'alamat'=>['Alamat','textarea'],'pekerjaan'=>['Pekerjaan','text'],'pendidikan'=>['Pendidikan','text'],'kk_id'=>['KK','fk:kartu_keluarga:no_kk']],['list'=>['nik','nama','pekerjaan']]],
+'kartu_keluarga'=>['Kartu Keluarga',['no_kk'=>['No KK','text'],'kepala_keluarga'=>['Kepala Keluarga','text'],'alamat'=>['Alamat','textarea']]],
+'perangkat_desa'=>['Perangkat Desa',['nama'=>['Nama','text'],'jabatan'=>['Jabatan','text'],'nip'=>['NIP/NIK','text'],'profil'=>['Profil','textarea'],'foto'=>['Foto','file']]],
+'rt_rw'=>['RT/RW',['dusun'=>['Dusun','text'],'rw'=>['RW','text'],'rt'=>['RT','text'],'ketua'=>['Ketua','text']]],
+'layanan'=>['Jenis Layanan',['nama'=>['Nama','text'],'deskripsi'=>['Deskripsi','textarea'],'template'=>['Template Surat (placeholder: {nama} {nik} {ttl} {alamat} {pekerjaan} {keperluan} {desa} {kecamatan} {kabupaten} {tanggal})','textarea']]],
+'pengajuan_layanan'=>['Pengajuan Layanan',['status'=>['Status','sel:Diajukan|Diproses|Disetujui|Ditolak|Selesai'],'keterangan'=>['Keterangan Admin','textarea'],'tanggal_selesai'=>['Tanggal Selesai','date']],['noadd'=>1,'list'=>['nomor','nama','status','tanggal'],'surat'=>1]],
+'pengaduan'=>['Pengaduan',['status'=>['Status','sel:Baru|Diverifikasi|Diproses|Selesai']],['noadd'=>1,'list'=>['nomor','nama','kategori','isi','status']]],
+'berita'=>['Berita',['judul'=>['Judul','text'],'kategori_id'=>['Kategori','fk:kategori_berita:nama'],'penulis'=>['Penulis','text'],'ringkasan'=>['Ringkasan','textarea'],'isi'=>['Isi','textarea'],'foto'=>['Foto','file'],'headline'=>['Headline','bool'],'tanggal'=>['Tanggal','date']],['list'=>['judul','penulis','tanggal']]],
+'kategori_berita'=>['Kategori Berita',['nama'=>['Nama','text']]],
+'agenda'=>['Agenda',['judul'=>['Judul','text'],'tanggal'=>['Tanggal','date'],'lokasi'=>['Lokasi','text'],'keterangan'=>['Keterangan','textarea']]],
+'banner'=>['Banner / Slider Kegiatan (ukuran ideal 1920x800)',['judul'=>['Judul Kegiatan','text'],'foto'=>['Gambar Banner','file'],'link'=>['Link (opsional, mis. berita.php?id=1)','text'],'urutan'=>['Urutan','number'],'aktif'=>['Tampilkan','bool']],['list'=>['judul','foto','urutan','aktif']]],
+'galeri'=>['Galeri',['judul'=>['Judul','text'],'kategori'=>['Kategori','sel:Kegiatan Desa|Pembangunan|Masyarakat|Pemerintahan|UMKM|Wisata'],'foto'=>['Foto','file'],'video_url'=>['URL Video','text']]],
+'apbdes'=>['APBDes',['tahun'=>['Tahun','number'],'uraian'=>['Uraian','text'],'jenis'=>['Jenis','sel:Pendapatan|Belanja|Pembiayaan'],'anggaran'=>['Anggaran','number'],'realisasi'=>['Realisasi','number']]],
+'dokumen_desa'=>['Dokumen Desa',['judul'=>['Judul','text'],'kategori'=>['Kategori','sel:APBDes|Realisasi APBDes|Dana Desa|Program Desa|Pembangunan|Laporan Desa|Dokumen Publik'],'tahun'=>['Tahun','number'],'file'=>['File (PDF/DOC/XLS)','file']]],
+'umkm'=>['UMKM',['nama'=>['Nama Usaha','text'],'pemilik'=>['Pemilik','text'],'jenis_usaha'=>['Jenis Usaha','text'],'produk'=>['Produk','text'],'kontak'=>['Kontak','text']]],
+'potensi_desa'=>['Potensi Desa',['nama'=>['Nama','text'],'jenis'=>['Jenis','sel:UMKM|Pertanian|Perikanan|Peternakan|Kerajinan|Wisata|Produk unggulan'],'deskripsi'=>['Deskripsi','textarea'],'lokasi'=>['Lokasi','text'],'kontak'=>['Kontak','text'],'foto'=>['Foto','file']]],
+'profil_desa'=>['Profil Desa',['sejarah'=>['Sejarah','textarea'],'visi'=>['Visi','textarea'],'misi'=>['Misi','textarea'],'geografis'=>['Geografis','textarea'],'batas'=>['Batas Wilayah','textarea'],'demografi'=>['Demografi','textarea']],['noadd'=>1,'nodel'=>1,'list'=>['visi']]],
+'users'=>['User & Hak Akses',['nama'=>['Nama','text'],'username'=>['Username','text'],'password'=>['Password (kosongkan jika tidak diubah)','pass'],'role_id'=>['Role','fk:roles:nama']],['list'=>['nama','username','role_id']]]];
+$t=$_GET['t']??'berita';if(!isset($T[$t])||($t=='users'&&$r!='super_admin'))$t='berita';
+$title=$T[$t][0];$F=$T[$t][1];$o=$T[$t][2]??[];$L=$o['list']??array_slice(array_keys($F),0,3);
+$can=$r!='kepala_desa'||$t=='pengajuan_layanan';$msg='';
+if($_SERVER['REQUEST_METHOD']=='POST'&&$can){try{if(!csrf_ok())throw new Exception('CSRF tidak valid');$id=(int)($_POST['id']??0);
+if(($_POST['a']??'')=='del'){if(!empty($o['nodel']))throw new Exception('Tidak boleh dihapus');run("DELETE FROM $t WHERE id=?",[$id]);}
+else{$c=[];$v=[];foreach($F as $k=>[$l,$ty]){if($ty=='file'){$n=upload($k);if($n===null)continue;$val=$n;}elseif($ty=='bool')$val=isset($_POST[$k])?1:0;elseif($ty=='pass'){if(($_POST[$k]??'')==='')continue;$val=password_hash($_POST[$k],PASSWORD_DEFAULT);}else{$val=trim($_POST[$k]??'');if($val==='')$val=null;}$c[]=$k;$v[]=$val;}
+if($id){$v[]=$id;run("UPDATE $t SET ".implode('=?,',$c)."=? WHERE id=?",$v);}elseif(empty($o['noadd']))run("INSERT INTO $t(".implode(',',$c).")VALUES(".rtrim(str_repeat('?,',count($c)),',').")",$v);}
+run('INSERT INTO log_aktivitas(user_id,aktivitas)VALUES(?,?)',[$_SESSION['u']['id'],($_POST['a']??'save')." $t"]);$msg='Berhasil';}catch(Exception $x){$msg=$x->getMessage();}}
+function fld($k,$l,$ty,$val){$h="<div class='mb-3'><label class='form-label'>".e($l)."</label>";
+if($ty=='textarea')$h.="<textarea name='$k' class='form-control' rows='4'>".e($val)."</textarea>";
+elseif($ty=='bool')$h.="<input type='checkbox' name='$k' value='1' ".($val?'checked':'')." class='form-check-input ms-2'>";
+elseif(str_starts_with($ty,'sel:')){$h.="<select name='$k' class='form-select'>";foreach(explode('|',substr($ty,4)) as $x)$h.="<option ".($x==$val?'selected':'').">".e($x)."</option>";$h.='</select>';}
+elseif(str_starts_with($ty,'fk:')){[,$tb,$cl]=explode(':',$ty);$h.="<select name='$k' class='form-select'><option value=''>-</option>";foreach(rows("SELECT id,$cl n FROM $tb") as $x)$h.="<option value='{$x['id']}' ".($x['id']==$val?'selected':'').">".e($x['n'])."</option>";$h.='</select>';}
+else{$in=$ty=='file'?"type='file'":($ty=='pass'?"type='password'":"type='$ty'");$h.="<input $in name='$k' class='form-control' ".(in_array($ty,['file','pass'])?'':"value='".e($val)."'").">";}return $h.'</div>';}
+include '../includes/sidebar.php';?>
+<h3 class="text-hijau"><?=e($title)?></h3><?php if($msg):?><div class="alert alert-info"><?=e($msg)?></div><?php endif;?>
+<?php if($can&&(isset($_GET['e'])||(isset($_GET['n'])&&empty($o['noadd'])))):$cur=isset($_GET['e'])?row("SELECT * FROM $t WHERE id=?",[(int)$_GET['e']]):[];?>
+<form method="post" enctype="multipart/form-data" class="card-desa bg-white p-4 mb-3"><?=csrf()?><input type="hidden" name="id" value="<?=(int)($cur['id']??0)?>"><input type="hidden" name="a" value="save"><?php foreach($F as $k=>[$l,$ty])echo fld($k,$l,$ty,$cur[$k]??'');?><button class="btn btn-hijau">Simpan</button> <a class="btn btn-secondary" href="crud.php?t=<?=$t?>">Batal</a></form>
+<?php else:?><?php if($can&&empty($o['noadd'])):?><a class="btn btn-hijau mb-2" href="crud.php?t=<?=$t?>&n=1">+ Tambah</a><?php endif;?>
+<div class="table-responsive"><table class="table bg-white"><tr><?php foreach($L as $c):?><th><?=e($c)?></th><?php endforeach;?><th></th></tr><?php foreach(rows("SELECT * FROM $t ORDER BY id DESC") as $x):?><tr><?php foreach($L as $c):?><td><?=e(mb_strimwidth((string)($x[$c]??''),0,60,'...'))?></td><?php endforeach;?><td class="text-nowrap"><?php if($can):?><a class="btn btn-sm btn-outline-success" href="crud.php?t=<?=$t?>&e=<?=$x['id']?>">Edit</a> <?php endif;if(!empty($o['surat'])):?><a class="btn btn-sm btn-outline-dark" target="_blank" href="surat.php?id=<?=$x['id']?>">Cetak Surat</a> <?php endif;if($can&&empty($o['nodel'])):?><form method="post" class="d-inline" onsubmit="return confirm('Hapus data?')"><?=csrf()?><input type="hidden" name="a" value="del"><input type="hidden" name="id" value="<?=$x['id']?>"><button class="btn btn-sm btn-outline-danger">Hapus</button></form><?php endif;?></td></tr><?php endforeach;?></table></div><?php endif;?><?php include '../includes/adminfoot.php';?>

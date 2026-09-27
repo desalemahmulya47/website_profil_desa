@@ -1,0 +1,11 @@
+<?php $title='Pengaduan';include 'includes/header.php';$msg='';$cek=null;
+if($_SERVER['REQUEST_METHOD']=='POST'){try{if(!csrf_ok())throw new Exception('Sesi tidak valid');
+$nik=$_POST['nik']??'';if(!preg_match('/^\d{16}$/',$nik))throw new Exception('NIK harus 16 digit');
+if(trim($_POST['nama'])==''||trim($_POST['isi'])=='')throw new Exception('Nama dan isi wajib diisi');
+$f=upload('file');$no='ADU-'.date('Ymd').'-'.random_int(1000,9999);
+run('INSERT INTO pengaduan(nomor,nama,nik,hp,kategori,isi,lokasi,file)VALUES(?,?,?,?,?,?,?,?)',[$no,$_POST['nama'],$nik,$_POST['hp'],$_POST['kategori'],$_POST['isi'],$_POST['lokasi'],$f]);
+$msg="<div class='alert alert-success'>Pengaduan terkirim. Nomor Pengaduan: <b>$no</b></div>";}catch(Exception $x){$msg="<div class='alert alert-danger'>".e($x->getMessage())."</div>";}}
+if(!empty($_GET['no']))$cek=row('SELECT * FROM pengaduan WHERE nomor=?',[$_GET['no']]);?>
+<div class="container"><h2 class="judul">Pengaduan Masyarakat</h2><?=$msg?><div class="row g-4"><div class="col-md-7"><form method="post" enctype="multipart/form-data" class="card-desa bg-white p-4"><?=csrf()?>
+<input name="nama" class="form-control mb-2" placeholder="Nama" required><input name="nik" class="form-control mb-2" placeholder="NIK (16 digit)" required maxlength="16"><input name="hp" class="form-control mb-2" placeholder="Nomor HP"><select name="kategori" class="form-select mb-2"><option>Infrastruktur</option><option>Pelayanan</option><option>Keamanan</option><option>Lingkungan</option><option>Lainnya</option></select><input name="lokasi" class="form-control mb-2" placeholder="Lokasi"><textarea name="isi" class="form-control mb-2" rows="4" placeholder="Isi pengaduan" required></textarea><input type="file" name="file" class="form-control mb-3"><button class="btn btn-hijau">Kirim Pengaduan</button></form></div>
+<div class="col-md-5"><form class="card-desa bg-white p-4"><h6 class="text-hijau">Cek Status Pengaduan</h6><input name="no" class="form-control mb-2" placeholder="Nomor Pengaduan"><button class="btn btn-gold">Cek</button><?php if(isset($_GET['no'])):?><hr><?php if($cek):?><b><?=e($cek['nomor'])?></b><br>Status: <span class="badge bg-success"><?=e($cek['status'])?></span><br><small><?=e($cek['tanggal'])?></small><?php else:?>Tidak ditemukan.<?php endif;endif;?></form></div></div></div><?php include 'includes/footer.php';?>

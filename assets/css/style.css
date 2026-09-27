@@ -1,0 +1,20 @@
+:root{--h:#064e3b;--e:#059669;--g:#d4a017}
+body{background:#f8faf9;font-family:'Segoe UI',sans-serif}
+.text-hijau{color:var(--h)!important}.text-gold{color:var(--g)!important}
+.btn-hijau{background:var(--e);color:#fff;border-radius:50px;padding:.4rem 1.2rem}.btn-hijau:hover{background:var(--h);color:#fff}
+.btn-gold{background:var(--g);color:#fff;border-radius:50px}.btn-gold:hover{background:#b8860b;color:#fff}
+.hero{background:linear-gradient(rgba(6,78,59,.85),rgba(5,150,105,.7)),url(../images/hero.jpg) center/cover;color:#fff;padding:120px 0}
+.card-desa{border:0;border-radius:16px;box-shadow:0 4px 14px rgba(0,0,0,.07);transition:.25s;height:100%}
+.card-desa:hover{transform:translateY(-5px);box-shadow:0 10px 24px rgba(0,0,0,.12)}
+.stat{text-align:center;padding:1.2rem}.stat i{font-size:1.8rem;color:var(--g)}.stat h3{color:var(--h);font-weight:700;margin:0}
+.judul{color:var(--h);font-weight:700;border-left:5px solid var(--g);padding-left:12px;margin:2rem 0 1.2rem}
+.footer-desa{background:var(--h);color:#fff}
+.thumb{height:180px;object-fit:cover;border-radius:16px 16px 0 0;background:#d1fae5;width:100%}
+.masonry{column-count:3;column-gap:1rem}.masonry>div{break-inside:avoid;margin-bottom:1rem;height:auto}
+@media(max-width:768px){.masonry{column-count:1}.hero{padding:70px 0}}
+.side{width:240px;min-height:100vh;background:var(--h)}.side a{color:#d1fae5;display:block;padding:.5rem 1rem;text-decoration:none}.side a:hover{background:var(--e);color:#fff}
+.side small{color:var(--g);padding:.5rem 1rem;display:block;margin-top:.5rem}
+@media print{.noprint{display:none!important}}
+.hero-img{height:78vh;object-fit:cover;background:#064e3b}.carousel-control-prev-icon,.carousel-control-next-icon{filter:drop-shadow(0 0 4px #000)}
+.fab-aduan{position:fixed;right:20px;bottom:20px;z-index:99;background:var(--e);color:#fff;padding:.7rem 1.2rem;border-radius:14px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.3)}.fab-aduan:hover{background:var(--h);color:#fff}
+@media(max-width:768px){.hero-img{height:38vh}}
