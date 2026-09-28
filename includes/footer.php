@@ -3,7 +3,7 @@
         <div class="footer-brand">
             <img src="https://via.placeholder.com/40" alt="Logo" class="footer-logo">
             <div>
-                <h4>Desa <?=s('nama_desa')?></h4>
+                <h4><?=s('nama_desa')?></h4>
                 <p>Kecamatan <?=s('kecamatan')?>, Kabupaten <?=s('kabupaten')?></p>
             </div>
         </div>

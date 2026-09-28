@@ -94,7 +94,7 @@ if ($bn):
                 </div>
                 
                 <div class="menu-grid">
-                    <a href="#" class="grid-item">
+                    <a href="<?=$root?>masyarakat/layanan.php" class="grid-item">
                         <div class="icon-wrapper" style="background-color: #e8f5e9; color: #0b5e46;">
                             <i class="fas fa-file-alt"></i>
                         </div>
@@ -102,17 +102,17 @@ if ($bn):
                         <i class="fas fa-arrow-right small-arrow"></i>
                     </a>
                     <a href="#" class="grid-item">
+                        <div class="icon-wrapper" style="background-color: #f3e5f5; color: #7b1fa2;">
+                            <i class="fas fa-images"></i>
+                        </div>
+                        <span>Profil Desa</span>
+                        <i class="fas fa-arrow-right small-arrow"></i>
+                    </a>
+                    <a href="<?=$root?>berita.php" class="grid-item">
                         <div class="icon-wrapper" style="background-color: #e3f2fd; color: #1976d2;">
                             <i class="fas fa-bullhorn"></i>
                         </div>
                         <span>Berita Desa</span>
-                        <i class="fas fa-arrow-right small-arrow"></i>
-                    </a>
-                    <a href="#" class="grid-item">
-                        <div class="icon-wrapper" style="background-color: #f3e5f5; color: #7b1fa2;">
-                            <i class="fas fa-images"></i>
-                        </div>
-                        <span>Galeri Foto</span>
                         <i class="fas fa-arrow-right small-arrow"></i>
                     </a>
                     <a href="#" class="grid-item">
@@ -122,7 +122,7 @@ if ($bn):
                         <span>Galeri Foto</span>
                         <i class="fas fa-arrow-right small-arrow"></i>
                     </a>
-                    <a href="#" class="grid-item">
+                    <a href="<?=$root?>masyarakat/layanan.php" class="grid-item">
                         <div class="icon-wrapper" style="background-color: #e8f5e9; color: #2e7d32;">
                             <i class="fab fa-whatsapp"></i>
                         </div>

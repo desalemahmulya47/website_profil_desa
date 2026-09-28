@@ -1,54 +1,8 @@
-<!-- <nav class="navbar navbar-expand-lg sticky-top bg-white shadow-sm">
-    <div class="container">
-        <a class="navbar-brand fw-bold text-hijau" href="<?=$root?>index.php"><i class="fa-solid fa-landmark text-gold"></i> <?=s('nama_desa')?></a>
-        
-        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nv">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="nv">
-            <ul class="navbar-nav ms-auto align-items-lg-center">
-                <li class="nav-item">
-                    <a class="nav-link" href="<?=$root?>index.php">Beranda</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?=$root?>profil.php">Profil Desa</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?=$root?>pemerintahan.php">Pemerintahan</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?=$root?>data-desa.php">Data Desa</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?=$root?>berita.php">Berita</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?=$root?>potensi.php">Potensi Desa</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Layanan</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="<?=$root?>masyarakat/layanan.php">Layanan Surat</a></li>
-                        <li><a class="dropdown-item" href="<?=$root?>masyarakat/cek-status.php">Cek Status Pengajuan</a></li>
-                        <li><a class="dropdown-item" href="<?=$root?>pengaduan.php">Pengaduan</a></li>
-                        <li><a class="dropdown-item" href="<?=$root?>galeri.php">Galeri</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?=$root?>transparansi.php">Transparansi</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#kontak">Kontak</a>
-                </li>
-
-                <li class="nav-item ms-lg-2">
-                    <a class="btn btn-hijau btn-sm" href="<?=$root?>login.php"><i class="fa fa-lock"></i> Login Admin</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav> -->
+<?php
+$root = '../';
+$file = "index";
+$page = $page ?? '';
+?>
 
 <!-- Header -->
 <header class="header">
