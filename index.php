@@ -48,7 +48,7 @@ if ($bn):
 <?php else: ?>
 <section class="hero-beranda">
     <div class="hero-bg">
-        <img src="https://images.unsplash.com/photo-1599839619722-39751411ea63?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Kantor Desa">
+        <img src="assets/uploads/banner1.jpg" alt="Kantor Desa">
         <div class="hero-overlay-gradient"></div>
     </div>
     <div class="hero-content">

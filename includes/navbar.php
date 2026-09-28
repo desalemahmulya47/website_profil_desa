@@ -1,5 +1,4 @@
 <?php
-$root = '../';
 $file = "index";
 $page = $page ?? '';
 ?>
