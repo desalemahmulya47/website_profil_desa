@@ -1,3 +1,0 @@
-<?php $title='Pemerintahan';include 'includes/header.php';?>
-<div class="container"><h2 class="judul">Pemerintahan Desa</h2><div class="row g-3"><?php foreach(rows('SELECT * FROM perangkat_desa ORDER BY id') as $p):?><div class="col-6 col-md-3"><div class="card-desa bg-white text-center pb-3"><?php if($p['foto']):?><img class="thumb" src="assets/uploads/<?=e($p['foto'])?>"><?php else:?><div class="thumb d-flex align-items-center justify-content-center"><i class="fa fa-user fa-3x text-success"></i></div><?php endif;?><h6 class="mt-2 mb-0"><?=e($p['nama'])?></h6><small class="text-gold"><?=e($p['jabatan'])?></small><p class="small text-muted px-2"><?=e($p['profil'])?></p></div></div><?php endforeach;?></div></div>
-<?php include 'includes/footer.php';?>

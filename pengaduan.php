@@ -1,4 +1,4 @@
-<?php $title='Pengaduan';include 'includes/header.php';$msg='';$cek=null;
+<?php $title='Pengaduan';$page='pengaduan';include 'includes/header.php';$msg='';$cek=null;
 if($_SERVER['REQUEST_METHOD']=='POST'){try{if(!csrf_ok())throw new Exception('Sesi tidak valid');
 $nik=$_POST['nik']??'';if(!preg_match('/^\d{16}$/',$nik))throw new Exception('NIK harus 16 digit');
 if(trim($_POST['nama'])==''||trim($_POST['isi'])=='')throw new Exception('Nama dan isi wajib diisi');

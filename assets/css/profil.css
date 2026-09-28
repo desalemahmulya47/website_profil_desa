@@ -1,0 +1,53 @@
+/* --- Hero Profil --- */
+.hero-profil { position: relative; height: 180px; overflow: hidden; background-color: var(--primary-color); }
+.hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+.hero-overlay-gradient { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(11, 94, 70, 0.9), rgba(11, 94, 70, 0.5)); }
+.hero-content { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 20px; color: var(--white); z-index: 2; }
+.hero-title { font-size: 24px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+.breadcrumb { font-size: 12px; display: flex; align-items: center; gap: 6px; opacity: 0.9; }
+
+/* Menu List Card */
+.menu-list-card { background-color: var(--white); border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); overflow: hidden; }
+.menu-item { display: flex; justify-content: space-between; align-items: center; padding: 16px; border-bottom: 1px solid var(--border-color); font-size: 14px; font-weight: 500; color: var(--text-muted); transition: background-color 0.2s; text-decoration: none; }
+.menu-item:last-child { border-bottom: none; }
+.menu-item-left { display: flex; align-items: center; gap: 12px; }
+.menu-item-left i { width: 20px; text-align: center; }
+.menu-item.active { background-color: var(--primary-color); color: var(--white); }
+.arrow-icon { font-size: 12px; opacity: 0.7; }
+
+/* Content Card */
+.content-card { background-color: var(--white); border-radius: 12px; padding: 20px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+.content-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.content-header h3 { font-size: 16px; font-weight: 600; color: var(--text-dark); }
+.content-text { font-size: 13px; line-height: 1.6; color: var(--text-muted); margin-bottom: 16px; }
+.content-image { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 20px; }
+
+/* Desktop Specifics for Profil */
+@media (min-width: 992px) {
+    /* Hero Desktop Profil */
+    .hero-profil { height: 300px; }
+    .hero-overlay-gradient { background: linear-gradient(to right, rgba(11, 94, 70, 0.95) 0%, rgba(11, 94, 70, 0.7) 50%, rgba(11, 94, 70, 0) 100%); }
+    .hero-content { padding: 60px 40px; justify-content: flex-start; max-width: 1400px; margin: 0 auto; width: 100%; align-items: flex-start; }
+    .hero-title { font-size: 40px; margin-top: 20px; }
+    .breadcrumb { font-size: 14px; }
+
+    /* Center Content */
+    .content-card { padding: 30px; border-radius: 16px; }
+    
+    .profil-main-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--border-color); }
+    .profil-main-icon { width: 50px; height: 50px; background-color: var(--primary-color); color: var(--white); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+    .profil-main-header h2 { font-size: 20px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+    .profil-main-header p { font-size: 13px; color: var(--text-muted); }
+
+    .content-header h3 { font-size: 18px; }
+    .content-text { font-size: 14px; }
+    .content-image { height: 280px; }
+    
+    .profil-cards-grid { display: flex; gap: 16px; margin-top: 30px; }
+    .p-card { flex: 1; border: 1px solid #e5e7eb; border-radius: 12px; padding: 20px 16px; text-align: center; display: flex; flex-direction: column; align-items: center; transition: box-shadow 0.2s; }
+    .p-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-color: var(--primary-light); }
+    .icon-green { width: 48px; height: 48px; background-color: var(--primary-light); color: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 12px; }
+    .p-card h5 { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
+    .p-card p { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
+}

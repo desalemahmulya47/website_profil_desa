@@ -1,6 +1,52 @@
-<footer id="kontak" class="footer-desa mt-5 pt-5"><div class="container"><div class="row g-4"><div class="col-md-4"><h5 class="text-gold">Desa <?=s('nama_desa')?></h5><p><i class="fa fa-location-dot"></i> <?=s('alamat')?></p><p><i class="fa fa-phone"></i> <?=s('telepon')?><br><i class="fa fa-envelope"></i> <?=s('email')?><br><i class="fa fa-clock"></i> <?=s('jam')?></p>
-<a class="text-white me-3" href="<?=s('facebook')?>"><i class="fab fa-facebook fa-lg"></i></a><a class="text-white me-3" href="<?=s('instagram')?>"><i class="fab fa-instagram fa-lg"></i></a><a class="text-white" href="<?=s('youtube')?>"><i class="fab fa-youtube fa-lg"></i></a></div>
-<div class="col-md-3"><h5 class="text-gold">Tautan</h5><a class="d-block text-white-50" href="<?=$root?>masyarakat/layanan.php">Layanan</a><a class="d-block text-white-50" href="<?=$root?>pengaduan.php">Pengaduan</a><a class="d-block text-white-50" href="<?=$root?>galeri.php">Galeri</a><a class="d-block text-white-50" href="<?=$root?>transparansi.php">Transparansi</a></div>
-<div class="col-md-5"><iframe src="<?=s('maps')?>" width="100%" height="180" style="border:0;border-radius:12px" loading="lazy"></iframe></div></div>
-<hr class="border-secondary mt-4"><p class="text-center pb-3 mb-0 small">© 2026 Desa <?=s('nama_desa')?>. All Rights Reserved.</p></div></footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script><script src="<?=$root?>assets/js/app.js"></script></body></html>
+<footer id="kontak" class="desktop-footer desktop-only">
+    <div class="footer-container">
+        <div class="footer-brand">
+            <img src="https://via.placeholder.com/40" alt="Logo" class="footer-logo">
+            <div>
+                <h4>Desa <?=s('nama_desa')?></h4>
+                <p>Kecamatan <?=s('kecamatan')?>, Kabupaten <?=s('kabupaten')?></p>
+            </div>
+        </div>
+        <div class="footer-info">
+            <div class="footer-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                    <span class="font-bold">Alamat</span>
+                    <p><?=s('alamat')?></p>
+                </div>
+            </div>
+            <div class="footer-item">
+                <i class="fas fa-phone-alt"></i>
+                <div>
+                    <span class="font-bold">Kontak</span>
+                    <p><?=s('telepon')?></p>
+                </div>
+            </div>
+            <div class="footer-item">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <span class="font-bold">Email</span>
+                    <p><?=s('email')?></p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-social">
+            <p class="slogan">Bersama Membangun<br>Desa Lemahmulya <i class="fas fa-leaf"></i></p>
+            <div class="social-icons">
+                <a class="text-white me-3" href="<?=s('facebook')?>"><i class="fab fa-facebook fa-lg"></i></a>
+                <a class="text-white me-3" href="<?=s('instagram')?>"><i class="fab fa-instagram fa-lg"></i></a>
+                <a class="text-white" href="<?=s('youtube')?>"><i class="fab fa-youtube fa-lg"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <hr class="border-secondary mt-4">
+        <p class="text-center pb-3 mb-0 small">© 2026 Desa <?=s('nama_desa')?>. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="<?=$root?>assets/js/app.js"></script>
+<script src="<?=$root?>assets/js/scripts.js"></script>
+</body>
+</html>
