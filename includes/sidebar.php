@@ -1,4 +1,78 @@
-<?php $M=['Data'=>['penduduk'=>'Data Penduduk','kartu_keluarga'=>'Data KK','perangkat_desa'=>'Perangkat Desa','rt_rw'=>'RT/RW'],'Layanan'=>['layanan'=>'Jenis Layanan & Template','pengajuan_layanan'=>'Pengajuan & Cetak Surat','pengaduan'=>'Pengaduan'],'Informasi'=>['banner'=>'Banner / Slider Beranda','berita'=>'Berita','kategori_berita'=>'Kategori Berita','agenda'=>'Agenda','galeri'=>'Galeri'],'Transparansi'=>['apbdes'=>'APBDes','dokumen_desa'=>'Dokumen Desa'],'Potensi'=>['umkm'=>'UMKM','potensi_desa'=>'Potensi Desa'],'Pengaturan'=>['profil_desa'=>'Profil Desa','users'=>'User & Hak Akses']];?>
-<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin - Digital Desa</title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"><link href="../assets/css/style.css" rel="stylesheet"></head><body><div class="d-flex"><div class="side noprint collapse d-md-block" id="sd"><div class="p-3 text-white fw-bold"><i class="fa fa-landmark text-gold"></i> DIGITAL DESA</div><a href="dashboard.php"><i class="fa fa-gauge"></i> Dashboard</a>
-<?php foreach($M as $_g=>$_it):?><small><?=$_g?></small><?php foreach($_it as $_t=>$_l):if($_t=='users'&&$_SESSION['u']['role']!='super_admin')continue;?><a href="crud.php?t=<?=$_t?>"><?=$_l?></a><?php endforeach;endforeach;?><small>Website</small><a href="pengaturan.php">Identitas, Kontak & Statistik</a><a href="../index.php" target="_blank">Lihat Website</a><a href="../logout.php">Logout</a></div>
-<div class="flex-grow-1 p-3"><button class="btn btn-sm btn-hijau d-md-none mb-2 noprint" data-bs-toggle="collapse" data-bs-target="#sd">Menu</button><div class="text-end small text-muted"><?=e($_SESSION['u']['nama'])?> (<?=e($_SESSION['u']['role'])?>)</div>
+<?php
+/**
+ * Admin Sidebar – menu configuration & layout.
+ * This file is included by admin pages (dashboard, crud, etc.).
+ * It renders the full HTML skeleton (doctype, head, sidebar, content wrapper).
+ */
+$M = [
+    'Data' => [
+        'penduduk'       => 'Data Penduduk',
+        'kartu_keluarga' => 'Data KK',
+        'perangkat_desa' => 'Perangkat Desa',
+        'rt_rw'          => 'RT/RW'
+    ],
+    'Layanan' => [
+        'layanan'           => 'Jenis Layanan & Template',
+        'pengajuan_layanan' => 'Pengajuan & Cetak Surat',
+        'pengaduan'         => 'Pengaduan'
+    ],
+    'Informasi' => [
+        'banner'          => 'Banner / Slider Beranda',
+        'berita'          => 'Berita',
+        'kategori_berita' => 'Kategori Berita',
+        'agenda'          => 'Agenda',
+    ],
+    'Transparansi' => [
+        'apbdes'       => 'APBDes',
+        'dokumen_desa' => 'Dokumen Desa'
+    ],
+    'Potensi' => [
+        'umkm'         => 'UMKM',
+        'potensi_desa' => 'Potensi Desa'
+    ],
+    'Pengaturan' => [
+        'profil_desa' => 'Profil Desa',
+        'users'       => 'User & Hak Akses'
+    ]
+];
+?>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin - Digital Desa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+<div class="d-flex">
+    <div class="side noprint collapse d-md-block" id="sd">
+        <div class="p-3 text-white fw-bold">
+            <i class="fa fa-landmark text-gold"></i> DIGITAL DESA
+        </div>
+        <a href="dashboard.php"><i class="fa fa-gauge"></i> Dashboard</a>
+
+        <?php foreach ($M as $group => $items): ?>
+            <small><?= $group ?></small>
+            <?php foreach ($items as $table => $label):
+                if ($table === 'users' && $_SESSION['u']['role'] !== 'super_admin') continue;
+            ?>
+                <a href="crud.php?t=<?= $table ?>"><?= $label ?></a>
+            <?php endforeach; ?>
+        <?php endforeach; ?>
+
+        <small>Website</small>
+        <a href="pengaturan.php">Identitas, Kontak & Statistik</a>
+        <a href="../index.php" target="_blank">Lihat Website</a>
+        <a href="../logout.php">Logout</a>
+    </div>
+
+    <div class="flex-grow-1 p-3">
+        <button class="btn btn-sm btn-hijau d-md-none mb-2 noprint"
+                data-bs-toggle="collapse"
+                data-bs-target="#sd">Menu</button>
+        <div class="text-end small text-muted">
+            <?= e($_SESSION['u']['nama']) ?> (<?= e($_SESSION['u']['role']) ?>)
+        </div>

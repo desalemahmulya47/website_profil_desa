@@ -23,7 +23,6 @@ $page = $page ?? '';
         <a href="<?=$root?>profil.php" class=<?= $page == 'profil' ? 'active' : '' ?>>Profil Desa</a>
         <a href="<?=$root?>struktur.php" class=<?= $page == 'struktur' ? 'active' : '' ?>>Struktur</a>
         <a href="<?=$root?>berita.php" class=<?= $page == 'berita' ? 'active' : '' ?>>Berita</a>
-        <a href="<?=$root?>galeri.php" class=<?= $page == 'galeri' ? 'active' : '' ?>>Galeri</a>
         <a href="<?=$root?>pengumuman.php" class=<?= $page == 'pengumuman' ? 'active' : '' ?>>Pengumuman</a>
         <a href="<?=$root?>masyarakat/layanan.php" class=<?= $page == 'layanan' ? 'active' : '' ?>>Pelayanan Online</a>
         <a href="<?=$root?>kontak.php" class=<?= $page == 'kontak' ? 'active' : '' ?>>Kontak</a>
@@ -60,40 +59,36 @@ $page = $page ?? '';
     </div>
     
     <div class="sidebar-menu">
-        <a href="index.html" class="sidebar-item">
+        <a href="<?=$root?>index.php" class="sidebar-item">
             <i class="fas fa-home"></i>
             <span>Beranda</span>
         </a>
-        <a href="profil.html" class="sidebar-item">
+        <a href="<?=$root?>profil.php" class="sidebar-item">
             <i class="fas fa-user"></i>
             <span>Profil Desa</span>
         </a>
-        <a href="struktur.html" class="sidebar-item">
+        <a href="<?=$root?>struktur.php" class="sidebar-item">
             <i class="fas fa-users"></i>
             <span>Struktur Organisasi</span>
         </a>
-        <a href="berita.html" class="sidebar-item">
+        <a href="<?=$root?>berita.php" class="sidebar-item">
             <i class="fas fa-file-alt"></i>
             <span>Berita</span>
         </a>
-        <a href="galeri.html" class="sidebar-item">
-            <i class="fas fa-images"></i>
-            <span>Galeri Foto</span>
-        </a>
-        <a href="pengumuman.html" class="sidebar-item">
+        <a href="<?=$root?>pengumuman.php" class="sidebar-item">
             <i class="fas fa-bullhorn"></i>
             <span>Pengumuman</span>
         </a>
-        <a href="layanan.html" class="sidebar-item">
+        <a href="<?=$root?>masyarakat/layanan.php" class="sidebar-item">
             <i class="fas fa-file-signature"></i>
             <span>Pelayanan Online</span>
         </a>
-        <a href="kontak.html" class="sidebar-item">
+        <a href="<?=$root?>kontak.php" class="sidebar-item">
             <i class="fas fa-phone-alt"></i>
             <span>Kontak</span>
         </a>
         <div class="sidebar-divider"></div>
-        <a href="login.html" class="sidebar-item">
+        <a href="<?=$root?>login.php" class="sidebar-item">
             <i class="fas fa-user-circle"></i>
             <span>Login Admin</span>
         </a>
@@ -119,10 +114,6 @@ $page = $page ?? '';
     <a href="<?=$root?>berita.php" class="nav-item">
         <i class="fas fa-newspaper"></i>
         <span>Berita</span>
-    </a>
-    <a href="<?=$root?>galeri.php" class="nav-item">
-        <i class="fas fa-images"></i>
-        <span>Galeri</span>
     </a>
     <a href="<?=$root?>menu.php" class="nav-item" id="bottomMenuBtn">
         <i class="fas fa-bars"></i>

@@ -56,7 +56,7 @@
     .hero-content h2 { font-size: 48px; }
     .subtitle { font-size: 18px; }
     .desc { font-size: 15px; }
-    .hero-buttons { width: fit-content; gap: 16px; }
+    .hero-buttons { gap: 16px; }
     .btn-primary-hero, .btn-outline-hero { padding: 14px 24px; font-size: 15px; }
 
     /* Center Content Desktop */

@@ -11,7 +11,6 @@ $T=[
 'kategori_berita'=>['Kategori Berita',['nama'=>['Nama','text']]],
 'agenda'=>['Agenda',['judul'=>['Judul','text'],'tanggal'=>['Tanggal','date'],'lokasi'=>['Lokasi','text'],'keterangan'=>['Keterangan','textarea']]],
 'banner'=>['Banner / Slider Kegiatan (ukuran ideal 1920x800)',['judul'=>['Judul Kegiatan','text'],'foto'=>['Gambar Banner','file'],'link'=>['Link (opsional, mis. berita.php?id=1)','text'],'urutan'=>['Urutan','number'],'aktif'=>['Tampilkan','bool']],['list'=>['judul','foto','urutan','aktif']]],
-'galeri'=>['Galeri',['judul'=>['Judul','text'],'kategori'=>['Kategori','sel:Kegiatan Desa|Pembangunan|Masyarakat|Pemerintahan|UMKM|Wisata'],'foto'=>['Foto','file'],'video_url'=>['URL Video','text']]],
 'apbdes'=>['APBDes',['tahun'=>['Tahun','number'],'uraian'=>['Uraian','text'],'jenis'=>['Jenis','sel:Pendapatan|Belanja|Pembiayaan'],'anggaran'=>['Anggaran','number'],'realisasi'=>['Realisasi','number']]],
 'dokumen_desa'=>['Dokumen Desa',['judul'=>['Judul','text'],'kategori'=>['Kategori','sel:APBDes|Realisasi APBDes|Dana Desa|Program Desa|Pembangunan|Laporan Desa|Dokumen Publik'],'tahun'=>['Tahun','number'],'file'=>['File (PDF/DOC/XLS)','file']]],
 'umkm'=>['UMKM',['nama'=>['Nama Usaha','text'],'pemilik'=>['Pemilik','text'],'jenis_usaha'=>['Jenis Usaha','text'],'produk'=>['Produk','text'],'kontak'=>['Kontak','text']]],

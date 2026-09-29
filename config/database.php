@@ -1,6 +1,33 @@
 <?php
 session_start();
-try{$pdo=new PDO('mysql:host=localhost;dbname=digital_desa;charset=utf8mb4','root','',[PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION,PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_ASSOC]);}catch(Exception $e){die('Database belum di-import. Import database.sql lewat phpMyAdmin.');}
+
+if ($_SERVER['HTTP_HOST'] === 'localhost') {
+    // XAMPP (Lokal)
+    $host = 'localhost';
+    $db   = 'digital_desa';
+    $user = 'root';
+    $pass = '';
+} else {
+    // InfinityFree (Hosting)
+    $host = 'sql107.infinityfree.com';
+    $db   = 'if0_43028656_desa_lemahmulya';
+    $user = 'if0_43028656';
+    $pass = 'rgmvGCwJ3SWcKxg';
+}
+
+try {
+    $pdo = new PDO(
+        "mysql:host=$host;dbname=$db;charset=utf8mb4",
+        $user,
+        $pass,
+        [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+        ]
+    );
+} catch (PDOException $e) {
+    die("Koneksi gagal: " . $e->getMessage());
+}
 function e($s){return htmlspecialchars((string)$s,ENT_QUOTES,'UTF-8');}
 function csrf(){if(empty($_SESSION['c']))$_SESSION['c']=bin2hex(random_bytes(16));return '<input type="hidden" name="csrf" value="'.$_SESSION['c'].'">';}
 function csrf_ok(){return isset($_POST['csrf'],$_SESSION['c'])&&hash_equals($_SESSION['c'],$_POST['csrf']);}

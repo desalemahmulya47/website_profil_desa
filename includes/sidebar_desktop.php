@@ -16,10 +16,6 @@
             <div><i class="fas fa-file-alt icon-box"></i> Berita</div>
             <i class="fas fa-chevron-right arrow"></i>
         </a>
-        <a href="<?=$root?>galeri.php" class="side-menu-item <?= $page == 'galeri' ? 'active' : '' ?>">
-            <div><i class="fas fa-images icon-box"></i> Galeri Foto</div>
-            <i class="fas fa-chevron-right arrow"></i>
-        </a>
         <a href="<?=$root?>pengumuman.php" class="side-menu-item <?= $page == 'pengumuman' ? 'active' : '' ?>">
             <div><i class="fas fa-bullhorn icon-box"></i> Pengumuman</div>
             <i class="fas fa-chevron-right arrow"></i>

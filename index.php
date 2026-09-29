@@ -60,10 +60,12 @@ if ($bn):
         
         <div class="hero-buttons">
             <a href="masyarakat/layanan.php" class="btn-primary-hero">
-                <i class="fas fa-file-alt"></i> Pelayanan Online 
+                <i class="fas fa-file-alt"></i>
+                <p>Pelayanan Online</p> 
             </a>
             <a href="profil.php" class="btn-outline-hero">
-                <i class="fas fa-user"></i> Profil Desa
+                <i class="fas fa-user"></i>
+                <p>Profil Desa</p>
             </a>
         </div>
     </div>
@@ -113,13 +115,6 @@ if ($bn):
                             <i class="fas fa-bullhorn"></i>
                         </div>
                         <span>Berita Desa</span>
-                        <i class="fas fa-arrow-right small-arrow"></i>
-                    </a>
-                    <a href="#" class="grid-item">
-                        <div class="icon-wrapper" style="background-color: #f3e5f5; color: #7b1fa2;">
-                            <i class="fas fa-image"></i>
-                        </div>
-                        <span>Galeri Foto</span>
                         <i class="fas fa-arrow-right small-arrow"></i>
                     </a>
                     <a href="<?=$root?>masyarakat/layanan.php" class="grid-item">
