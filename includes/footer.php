@@ -1,7 +1,7 @@
 <footer id="kontak" class="desktop-footer desktop-only">
     <div class="footer-container">
         <div class="footer-brand">
-            <img src="https://via.placeholder.com/40" alt="Logo" class="footer-logo">
+            <img src="assets/uploads/logo.png" alt="Logo" class="footer-logo">
             <div>
                 <h4><?=s('nama_desa')?></h4>
                 <p>Kecamatan <?=s('kecamatan')?>, Kabupaten <?=s('kabupaten')?></p>

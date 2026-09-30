@@ -8,10 +8,10 @@ $page = $page ?? '';
     <div>
         <a href="<?=$root?>index.php" class="header-left">
         <div class="logo">
-            <img src="https://via.placeholder.com/40" alt="Logo">
+            <img src="assets/uploads/logo.png" alt="Logo">
         </div>
         <div class="header-titles">
-            <h1><?=s('nama_desa')?></h1>
+            <h1>Desa <?=s('nama_desa')?></h1>
             <p>Kecamatan <?=s('kecamatan')?>, Kabupaten <?=s('kabupaten')?></p>
         </div>
         </a>
@@ -46,11 +46,11 @@ $page = $page ?? '';
     <div class="sidebar-header">
         <div class="sidebar-logo-container">
             <div class="logo">
-                <img src="https://via.placeholder.com/40" alt="Logo">
+                <img src="assets/uploads/logo.png" alt="Logo">
             </div>
             <div class="sidebar-titles">
-                <h2>Desa Lemahmulya</h2>
-                <p>Kec. Majalaya, Kab. Karawang</p>
+                <h2>Desa <?=s('nama_desa')?></h2>
+                <p>Kec. <?=s('kecamatan')?>, Kab. <?=s('kabupaten')?></p>
             </div>
         </div>
         <button class="close-btn" id="closeSidebarBtn">

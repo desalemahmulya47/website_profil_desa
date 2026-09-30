@@ -18,23 +18,25 @@ $st = [
 $bn = rows('SELECT * FROM banner WHERE aktif=1 ORDER BY urutan,id DESC');
 if ($bn):
 ?>
-
 <div id="hs" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
     <div class="carousel-indicators">
         <?php foreach ($bn as $i => $b): ?>
         <button type="button" data-bs-target="#hs" data-bs-slide-to="<?= $i ?>" class="<?= $i ? '' : 'active' ?>"></button>
         <?php endforeach; ?>
     </div>
-    <div class="carousel-inner">
+    <div class="hero-beranda">
         <?php foreach ($bn as $i => $b): ?>
-        <div class="carousel-item <?= $i ? '' : 'active' ?>">
-            <?php if ($b['link']): ?>
-            <a href="<?= e($b['link']) ?>">
-            <?php endif; ?>
-            <img src="assets/uploads/<?= e($b['foto']) ?>" class="d-block w-100 hero-img" alt="<?= e($b['judul']) ?>">
-            <?php if ($b['link']): ?>
-            </a>
-            <?php endif; ?>
+        <div class="hero-bg">
+            <div class="carousel-item <?= $i ? '' : 'active' ?>">
+                <?php if ($b['link']): ?>
+                <a href="<?= e($b['link']) ?>">
+                <?php endif; ?>
+                <img src="assets/uploads/<?= e($b['foto']) ?>" class="d-block w-100 hero-img" alt="<?= e($b['judul']) ?>">
+                <div class="hero-overlay-gradient"></div>
+                <?php if ($b['link']): ?>
+                </a>
+                <?php endif; ?>
+            </div>
         </div>
         <?php endforeach; ?>
     </div>

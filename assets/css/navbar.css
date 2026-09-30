@@ -3,7 +3,6 @@
 /* Header */
 .header { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background-color: var(--white); position: sticky; top: 0; z-index: 50; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
 .header-left { display: flex; align-items: center; gap: 12px; }
-.logo img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
 .header-titles h1 { font-size: 14px; font-weight: 700; color: var(--primary-color); margin-bottom: 2px; }
 .header-titles p { font-size: 10px; color: var(--text-muted); }
 .menu-toggle { background: none; border: none; font-size: 20px; color: var(--primary-color); cursor: pointer; }

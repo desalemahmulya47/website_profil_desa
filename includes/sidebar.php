@@ -9,7 +9,7 @@ $M = [
         'penduduk'       => 'Data Penduduk',
         'kartu_keluarga' => 'Data KK',
         'perangkat_desa' => 'Perangkat Desa',
-        'rt_rw'          => 'RT/RW'
+        'dusun'          => 'Dusun'
     ],
     'Layanan' => [
         'layanan'           => 'Jenis Layanan & Template',
@@ -52,7 +52,7 @@ $M = [
         <div class="p-3 text-white fw-bold">
             <i class="fa fa-landmark text-gold"></i> DIGITAL DESA
         </div>
-        <a href="dashboard.php"><i class="fa fa-gauge"></i> Dashboard</a>
+        <a href="dashboard.php"><i class="fa fa-gauge"></i>Dashboard</a>
 
         <?php foreach ($M as $group => $items): ?>
             <small><?= $group ?></small>

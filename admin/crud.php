@@ -2,8 +2,8 @@
 $T=[
 'penduduk'=>['Data Penduduk',['nik'=>['NIK','text'],'nama'=>['Nama','text'],'jk'=>['JK','sel:Laki-laki|Perempuan'],'tempat_lahir'=>['Tempat Lahir','text'],'tanggal_lahir'=>['Tgl Lahir','date'],'alamat'=>['Alamat','textarea'],'pekerjaan'=>['Pekerjaan','text'],'pendidikan'=>['Pendidikan','text'],'kk_id'=>['KK','fk:kartu_keluarga:no_kk']],['list'=>['nik','nama','pekerjaan']]],
 'kartu_keluarga'=>['Kartu Keluarga',['no_kk'=>['No KK','text'],'kepala_keluarga'=>['Kepala Keluarga','text'],'alamat'=>['Alamat','textarea']]],
-'perangkat_desa'=>['Perangkat Desa',['nama'=>['Nama','text'],'jabatan'=>['Jabatan','text'],'nip'=>['NIP/NIK','text'],'profil'=>['Profil','textarea'],'foto'=>['Foto','file']]],
-'rt_rw'=>['RT/RW',['dusun'=>['Dusun','text'],'rw'=>['RW','text'],'rt'=>['RT','text'],'ketua'=>['Ketua','text']]],
+'perangkat_desa'=>['Perangkat Desa',['nama'=>['Nama','text'],'jabatan'=>['Jabatan','text'],'nip'=>['NIP/NIK','text'],'textarea'],'foto'=>['Foto','file']]],
+'dusun'=>['Dusun',['dusun'=>['Dusun','text']]],
 'layanan'=>['Jenis Layanan',['nama'=>['Nama','text'],'deskripsi'=>['Deskripsi','textarea'],'template'=>['Template Surat (placeholder: {nama} {nik} {ttl} {alamat} {pekerjaan} {keperluan} {desa} {kecamatan} {kabupaten} {tanggal})','textarea']]],
 'pengajuan_layanan'=>['Pengajuan Layanan',['status'=>['Status','sel:Diajukan|Diproses|Disetujui|Ditolak|Selesai'],'keterangan'=>['Keterangan Admin','textarea'],'tanggal_selesai'=>['Tanggal Selesai','date']],['noadd'=>1,'list'=>['nomor','nama','status','tanggal'],'surat'=>1]],
 'pengaduan'=>['Pengaduan',['status'=>['Status','sel:Baru|Diverifikasi|Diproses|Selesai']],['noadd'=>1,'list'=>['nomor','nama','kategori','isi','status']]],
@@ -13,7 +13,6 @@ $T=[
 'banner'=>['Banner / Slider Kegiatan (ukuran ideal 1920x800)',['judul'=>['Judul Kegiatan','text'],'foto'=>['Gambar Banner','file'],'link'=>['Link (opsional, mis. berita.php?id=1)','text'],'urutan'=>['Urutan','number'],'aktif'=>['Tampilkan','bool']],['list'=>['judul','foto','urutan','aktif']]],
 'apbdes'=>['APBDes',['tahun'=>['Tahun','number'],'uraian'=>['Uraian','text'],'jenis'=>['Jenis','sel:Pendapatan|Belanja|Pembiayaan'],'anggaran'=>['Anggaran','number'],'realisasi'=>['Realisasi','number']]],
 'dokumen_desa'=>['Dokumen Desa',['judul'=>['Judul','text'],'kategori'=>['Kategori','sel:APBDes|Realisasi APBDes|Dana Desa|Program Desa|Pembangunan|Laporan Desa|Dokumen Publik'],'tahun'=>['Tahun','number'],'file'=>['File (PDF/DOC/XLS)','file']]],
-'umkm'=>['UMKM',['nama'=>['Nama Usaha','text'],'pemilik'=>['Pemilik','text'],'jenis_usaha'=>['Jenis Usaha','text'],'produk'=>['Produk','text'],'kontak'=>['Kontak','text']]],
 'potensi_desa'=>['Potensi Desa',['nama'=>['Nama','text'],'jenis'=>['Jenis','sel:UMKM|Pertanian|Perikanan|Peternakan|Kerajinan|Wisata|Produk unggulan'],'deskripsi'=>['Deskripsi','textarea'],'lokasi'=>['Lokasi','text'],'kontak'=>['Kontak','text'],'foto'=>['Foto','file']]],
 'profil_desa'=>['Profil Desa',['sejarah'=>['Sejarah','textarea'],'visi'=>['Visi','textarea'],'misi'=>['Misi','textarea'],'geografis'=>['Geografis','textarea'],'batas'=>['Batas Wilayah','textarea'],'demografi'=>['Demografi','textarea']],['noadd'=>1,'nodel'=>1,'list'=>['visi']]],
 'users'=>['User & Hak Akses',['nama'=>['Nama','text'],'username'=>['Username','text'],'password'=>['Password (kosongkan jika tidak diubah)','pass'],'role_id'=>['Role','fk:roles:nama']],['list'=>['nama','username','role_id']]]];
