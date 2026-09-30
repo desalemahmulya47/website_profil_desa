@@ -39,10 +39,29 @@ if ($bn):
             </div>
         </div>
         <?php endforeach; ?>
+        
+        <div class="hero-content">
+            <div class="welcome-badge">
+                <i class="fas fa-leaf"></i> Selamat Datang di
+            </div>
+            <h2>Desa <?=s('nama_desa')?></h2>
+            <p class="subtitle">Kecamatan <?=s('kecamatan')?>, Kabupaten <?=s('kabupaten')?></p>
+            
+            <div class="hero-buttons">
+                <a href="masyarakat/layanan.php" class="btn-primary-hero">
+                    <i class="fas fa-file-alt"></i>
+                    <p>Pelayanan Online</p> 
+                </a>
+                <a href="profil.php" class="btn-outline-hero">
+                    <i class="fas fa-user"></i>
+                    <p>Profil Desa</p>
+                </a>
+            </div>
+        </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#hs" data-bs-slide="prev">
+    <!-- <button class="carousel-control-prev" type="button" data-bs-target="#hs" data-bs-slide="prev">
         <span class="carousel-control-prev-icon"></span>
-    </button>
+    </button> -->
     <button class="carousel-control-next" type="button" data-bs-target="#hs" data-bs-slide="next">
         <span class="carousel-control-next-icon"></span>
     </button>
