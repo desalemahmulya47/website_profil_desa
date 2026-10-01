@@ -32,3 +32,14 @@ if(sidebarOverlay) {
         sidebarOverlay.classList.remove('active');
     });
 }
+
+const profilToggle = document.getElementById('profilToggle');
+const profilSubmenu = document.getElementById('profilSubmenu');
+const arrow = profilToggle.querySelector('.arrow');
+
+profilToggle.addEventListener('click', function () {
+    const terbuka = profilSubmenu.style.display === 'block';
+
+    profilSubmenu.style.display = terbuka ? 'none' : 'block';
+    arrow.classList.toggle('rotated', !terbuka);
+});

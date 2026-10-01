@@ -16,8 +16,7 @@ $st = [
 ?>
 <?php
 $bn = rows('SELECT * FROM banner WHERE aktif=1 ORDER BY urutan,id DESC');
-if ($bn):
-?>
+if ($bn):?>
 <div id="hs" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
     <div class="carousel-indicators">
         <?php foreach ($bn as $i => $b): ?>
@@ -39,7 +38,6 @@ if ($bn):
             </div>
         </div>
         <?php endforeach; ?>
-        
         <div class="hero-content">
             <div class="welcome-badge">
                 <i class="fas fa-leaf"></i> Selamat Datang di
@@ -59,9 +57,6 @@ if ($bn):
             </div>
         </div>
     </div>
-    <!-- <button class="carousel-control-prev" type="button" data-bs-target="#hs" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-    </button> -->
     <button class="carousel-control-next" type="button" data-bs-target="#hs" data-bs-slide="next">
         <span class="carousel-control-next-icon"></span>
     </button>

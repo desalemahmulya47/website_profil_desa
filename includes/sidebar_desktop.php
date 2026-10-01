@@ -4,10 +4,34 @@
             <div><i class="fas fa-home icon-box"></i> Beranda</div>
             <i class="fas fa-chevron-right arrow"></i>
         </a>
-        <a href="<?=$root?>profil.php" class="side-menu-item <?= $page == 'profil' ? 'active' : '' ?>">
-            <div><i class="fas fa-user icon-box"></i> Profil Desa</div>
-            <i class="fas fa-chevron-right arrow"></i>
-        </a>
+        <?php
+        // Submenu terbuka jika sedang di halaman profil atau sub-halaman profil
+        $profilOpen = in_array($page, ['profil', 'sejarah', 'visi-misi', 'geografi']);
+        $subPage    = $page; // e.g. 'sejarah', 'visi-misi', 'geografi'
+        ?>
+        <!-- Profil Desa – klik untuk buka submenu -->
+        <div class="side-menu-item-wrapper">
+            <a href="javascript:void(0)"
+               class="side-menu-item side-menu-toggle <?= $profilOpen ? 'active' : '' ?>"
+               id="profilToggle">
+                <div><i class="fas fa-user icon-box"></i> Profil Desa</div>
+                <i class="fas fa-chevron-right arrow <?= $profilOpen ? 'rotated' : '' ?>"></i>
+            </a>
+            <div class="side-submenu" id="profilSubmenu" <?= $profilOpen ? 'style="display:block"' : '' ?>>
+                <a href="<?=$root?>profil.php?bagian=sejarah"
+                   class="side-submenu-item <?= $subPage == 'sejarah' ? 'active' : '' ?>">
+                    <i class="fas fa-scroll icon-box"></i> Sejarah Desa
+                </a>
+                <a href="<?=$root?>profil.php?bagian=visi-misi"
+                   class="side-submenu-item <?= $subPage == 'visi-misi' ? 'active' : '' ?>">
+                    <i class="fas fa-eye icon-box"></i> Visi &amp; Misi
+                </a>
+                <a href="<?=$root?>profil.php?bagian=geografi"
+                   class="side-submenu-item <?= $subPage == 'geografi' ? 'active' : '' ?>">
+                    <i class="fas fa-map-marked-alt icon-box"></i> Geografi
+                </a>
+            </div>
+        </div>
         <a href="<?=$root?>struktur.php" class="side-menu-item <?= $page == 'struktur' ? 'active' : '' ?>">
             <div><i class="fas fa-users icon-box"></i> Struktur Pemerintah Desa</div>
             <i class="fas fa-chevron-right arrow"></i>

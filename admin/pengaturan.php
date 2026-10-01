@@ -1,4 +1,23 @@
-<?php require '../config/database.php';need(['super_admin','admin_desa']);$msg='';
+<?php
+require '../config/database.php';
+need(['super_admin','admin_desa']);
+$msg='';
 if($_SERVER['REQUEST_METHOD']=='POST'&&csrf_ok()){foreach($_POST as $k=>$v)if(isset($S[$k]))run('UPDATE pengaturan SET v=? WHERE k=?',[$v,$k]);$msg='Tersimpan';$S=array_column(rows('SELECT k,v FROM pengaturan'),'v','k');}
-include '../includes/sidebar.php';?><h3 class="text-hijau">Identitas, Kontak, Sosmed & Statistik</h3><?php if($msg):?><div class="alert alert-success"><?=e($msg)?></div><?php endif;?>
-<form method="post" class="row g-2"><?=csrf()?><?php foreach($S as $k=>$v):?><div class="col-md-6"><label class="small"><?=e($k)?></label><input name="<?=e($k)?>" value="<?=e($v)?>" class="form-control"></div><?php endforeach;?><div class="col-12"><button class="btn btn-hijau">Simpan</button></div></form><?php include '../includes/adminfoot.php';?>
+include '../includes/sidebar.php';?>
+
+<h3 class="text-hijau">Identitas, Kontak, Sosmed & Statistik</h3>
+<?php if($msg):?>
+    <div class="alert alert-success"><?=e($msg)?></div>
+<?php endif;?>
+
+<form method="post" class="row g-2">
+    <?=csrf()?><?php foreach($S as $k=>$v):?>
+        <div class="col-md-6">
+            <label class="small"><?=e($k)?></label>
+            <input name="<?=e($k)?>" value="<?=e($v)?>" class="form-control">
+        </div>
+    <?php endforeach;?>
+    <div class="col-12"><button class="btn btn-hijau">Simpan</button></div>
+</form>
+
+<?php include '../includes/adminfoot.php';?>

@@ -61,7 +61,7 @@ $page = $page ?? '';
     <div class="sidebar-menu">
         <a href="<?=$root?>index.php" class="sidebar-item">
             <i class="fas fa-home"></i>
-            <span>Beranda</span>
+            <span>Berandaa</span>
         </a>
         <a href="<?=$root?>profil.php" class="sidebar-item">
             <i class="fas fa-user"></i>

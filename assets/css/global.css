@@ -86,22 +86,6 @@ p { margin: 0; }
     .side-menu-item.active .icon-box, .side-menu-item.active .arrow { color: var(--white); }
     .sidebar-illustration { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; color: var(--primary-color); font-weight: 700; font-size: 15px; padding: 0 10px; }
 
-    /* Right Sidebar */
-    .sidebar-right { width: 280px; flex-shrink: 0; }
-    .widget { background: var(--white); border-radius: 16px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.03); margin-bottom: 20px; }
-    .widget-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
-    .widget-header h4 { font-size: 15px; font-weight: 700; color: var(--text-dark); }
-    .text-sm { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; }
-    .quote-box { background: #e8f5e9; border-radius: 12px; padding: 16px; text-align: center; color: var(--primary-color); font-weight: 600; font-size: 14px; position: relative; }
-    .quote-box .icon-bg { position: absolute; opacity: 0.2; font-size: 24px; }
-    .quote-box .left { top: 10px; left: 10px; }
-    .quote-box .right { bottom: 10px; right: 10px; transform: scaleX(-1); }
-    .widget-body.p-0 { padding: 0; }
-    .fast-menu-item { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid var(--border-color); color: var(--text-dark); font-size: 14px; font-weight: 600; transition: color 0.2s; }
-    .fast-menu-item:last-child { border-bottom: none; }
-    .fast-menu-item > div { display: flex; align-items: center; gap: 12px; }
-    .fast-menu-item i { color: var(--primary-color); }
-
     /* Footer Desktop */
     .desktop-footer { background-color: var(--text-dark); color: var(--white); padding: 40px 40px 20px; margin-top: 40px; }
     .footer-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; gap: 40px; }

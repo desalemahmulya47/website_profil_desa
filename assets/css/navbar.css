@@ -6,3 +6,49 @@
 .header-titles h1 { font-size: 14px; font-weight: 700; color: var(--primary-color); margin-bottom: 2px; }
 .header-titles p { font-size: 10px; color: var(--text-muted); }
 .menu-toggle { background: none; border: none; font-size: 20px; color: var(--primary-color); cursor: pointer; }
+
+/* ---- Sidebar Profil Desa – dropdown submenu (klik) ---- */
+.side-menu-item-wrapper {
+    position: relative;
+}
+
+/* Submenu tersembunyi secara default, muncul di bawah */
+.side-submenu {
+    display: none;
+    padding-left: 20px;
+}
+
+/* Item dalam submenu */
+.side-submenu-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    color: var(--text-muted, #6b7280);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background 0.15s, color 0.15s;
+    border-left: 3px solid transparent;
+}
+
+.side-submenu-item:hover {
+    background: var(--primary-light, #e8f5e9);
+    color: var(--primary-color, #0b5e46);
+}
+
+/* Sub-item aktif (halaman yang sedang dibuka) */
+.side-submenu-item.active {
+    background: var(--primary-light, #e8f5e9);
+    color: var(--primary-color, #0b5e46);
+    border-left-color: var(--primary-color, #0b5e46);
+    font-weight: 600;
+}
+
+/* Panah: chevron-down, rotasi saat terbuka */
+.side-menu-item-wrapper .arrow {
+    transition: transform 0.25s ease;
+}
+.side-menu-item-wrapper .arrow.rotated {
+    transform: rotate(90deg);
+}

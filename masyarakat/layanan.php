@@ -4,20 +4,6 @@ $title='Layanan';
 $page="layanan";
 include '../includes/header.php';
 ?>
-<div class="container">
-    <h2 class="judul">Layanan Desa Digital</h2>
-    <p>Pilih layanan, isi formulir, kirim, lalu simpan nomor pengajuan. <a href="cek-status.php">Cek status</a></p>
-    <div class="row g-3">
-        <div class="col-md-4">
-            <div class="card-desa bg-white p-3">
-                <h6 class="text-hijau">
-                <i class="fa fa-file-lines text-gold"></i> 
-                Cek Pajak Bumi dan Bangunan</h6>
-                <a class="btn btn-hijau btn-sm" href="https://cekpbb.karawangkab.go.id/" target="_blank">Ajukan</a>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="container">
     <h2 class="judul">Pelayanan Online</h2>
@@ -52,6 +38,13 @@ include '../includes/header.php';
                 </div>
             </div>
         <?php endforeach;?>
+            <div class="card-desa bg-white p-3">
+                <h6 class="text-hijau">
+                <i class="fa fa-file-lines text-gold"></i> 
+                <?=e($l['nama'])?></h6>
+                <p class="small text-muted"><?=e($l['deskripsi'])?></p>
+                <a href="https://karawangkab.go.id/layanan-kecamatan" class="btn btn-outline-hijau btn-sm" target="_blank">Download</a>
+            </div>
     </div>
 </div>
         

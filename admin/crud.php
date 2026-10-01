@@ -2,7 +2,7 @@
 $T=[
 'penduduk'=>['Data Penduduk',['nik'=>['NIK','text'],'nama'=>['Nama','text'],'jk'=>['JK','sel:Laki-laki|Perempuan'],'tempat_lahir'=>['Tempat Lahir','text'],'tanggal_lahir'=>['Tgl Lahir','date'],'alamat'=>['Alamat','textarea'],'pekerjaan'=>['Pekerjaan','text'],'pendidikan'=>['Pendidikan','text'],'kk_id'=>['KK','fk:kartu_keluarga:no_kk']],['list'=>['nik','nama','pekerjaan']]],
 'kartu_keluarga'=>['Kartu Keluarga',['no_kk'=>['No KK','text'],'kepala_keluarga'=>['Kepala Keluarga','text'],'alamat'=>['Alamat','textarea']]],
-'perangkat_desa'=>['Perangkat Desa',['nama'=>['Nama','text'],'jabatan'=>['Jabatan','text'],'nip'=>['NIP/NIK','text'],'textarea'],'foto'=>['Foto','file']]],
+'perangkat_desa'=>['Perangkat Desa',['nama'=>['Nama','text'],'jabatan'=>['Jabatan','text'],'nip'=>['NIP/NIK','text'],'foto'=>['Foto','file']]],
 'dusun'=>['Dusun',['dusun'=>['Dusun','text']]],
 'layanan'=>['Jenis Layanan',['nama'=>['Nama','text'],'deskripsi'=>['Deskripsi','textarea'],'template'=>['Template Surat (placeholder: {nama} {nik} {ttl} {alamat} {pekerjaan} {keperluan} {desa} {kecamatan} {kabupaten} {tanggal})','textarea']]],
 'pengajuan_layanan'=>['Pengajuan Layanan',['status'=>['Status','sel:Diajukan|Diproses|Disetujui|Ditolak|Selesai'],'keterangan'=>['Keterangan Admin','textarea'],'tanggal_selesai'=>['Tanggal Selesai','date']],['noadd'=>1,'list'=>['nomor','nama','status','tanggal'],'surat'=>1]],

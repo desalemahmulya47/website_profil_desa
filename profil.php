@@ -10,6 +10,7 @@ include 'includes/header.php';
 
 // Fetch the single row with all profile data
 $p = row('SELECT * FROM profil_desa LIMIT 1');
+$bagian = $_GET['bagian'] ?? 'sejarah';
 ?>
 
 <?php include 'includes/hero.php'; ?>
@@ -20,35 +21,26 @@ $p = row('SELECT * FROM profil_desa LIMIT 1');
         <section class="content-section">
             <h2 class="judul">Profil Desa <?= s('nama_desa') ?></h2>
             <?php
-            // Map of database fields to their displayed titles
+            $bagian = $_GET['bagian'] ?? 'sejarah';
+
             $sections = [
                 'sejarah'   => 'Sejarah Desa',
-                'visi'      => 'Visi',
-                'misi'      => 'Misi',
-                'geografis' => 'Kondisi Geografis',
-                'batas'     => 'Batas Wilayah',
-                'demografi' => 'Demografi'
+                'visi-misi' => 'Visi & Misi',
+                'geografi'  => 'Geografi'
             ];
-            foreach ($sections as $key => $label):
             ?>
-                <div class="card-desa bg-white p-4 mb-3">
-                    <h5 class="text-hijau"><?= $label ?></h5>
-                    <?= nl2br(e($p[$key] ?? '')) ?>
-                </div>
-            <?php endforeach; ?>
 
             <div class="card-desa bg-white p-4 mb-3">
-                <h5 class="text-hijau">Struktur Pemerintahan &amp; Potensi</h5>
-                <a href="pemerintahan.php">Lihat Pemerintahan</a> |
-                <a href="potensi.php">Lihat Potensi</a>
+                <?php
+                if ($bagian === 'sejarah') {
+                    include 'profil/sejarah.php';
+                } elseif ($bagian === 'visi-misi') {
+                    include 'profil/visi-misi.php';
+                } elseif ($bagian === 'geografi') {
+                    include 'profil/geografi.php';
+                }
+                ?>
             </div>
-
-            <!-- Map iframe -->
-            <iframe src="<?= s('maps') ?>"
-                    width="100%"
-                    height="320"
-                    style="border:0; border-radius:16px;">
-            </iframe>
         </section>
     </main>
 </div>
