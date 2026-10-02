@@ -53,9 +53,9 @@ INSERT INTO layanan(nama,deskripsi,link)VALUES
 ('JDIH', 'Jaringan Dokumentasi dan Informasi Hukum Kabupaten Karawang', 'https://jdih.karawangkab.go.id/'),
 ('MPP Kab. Karawang', 'Mall Pelayanan Publik Kabupaten Karawang', 'https://mpp.karawangkab.go.id/'),
 ('Info Loker', 'Informasi lowongan pekerjaan di Kabupaten Karawang', 'https://karawangkab.go.id/layanan-kecamatan'),
-('Edukcapil', 'Edukasi Kependudukan Kabupaten Karawang', 'https://edukcapil.karawangkab.go.id/');
-('Cek Bansos', 'Cek bantuan sosial', 'https://cekbansos.kemensos.go.id/');
-('Aplikasi Cek Bansos', 'Aplikasi Cek Dan Pengajuan Penerimaan Bantuan Sosial', 'https://play.google.com/store/apps/details?id=id.go.kemensos.pelaporan')
+('Edukcapil', 'Edukasi Kependudukan Kabupaten Karawang', 'https://edukcapil.karawangkab.go.id/'),
+('Cek Bansos', 'Cek bantuan sosial', 'https://cekbansos.kemensos.go.id/'),
+('Aplikasi Cek Bansos', 'Aplikasi Cek Dan Pengajuan Penerimaan Bantuan Sosial', 'https://play.google.com/store/apps/details?id=id.go.kemensos.pelaporan');
 INSERT INTO formulir(nama,deskripsi,dokumen)VALUES
 ('Formulir Biodata Keluarga','Formulir permohonan biodata keluarga','Formulir F1-01 baru.pdf'),
 ('Formulir Pendaftaran Peristiwa Kependudukan','Formulir permohonan KK','Formulir F-1.02 Pendaftaran Peristiwa Kependudukan.pdf'),
