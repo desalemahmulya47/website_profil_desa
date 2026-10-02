@@ -153,13 +153,30 @@ if ($bn):?>
                     <a href="berita.php" class="see-all">Lihat Semua <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="news-grid">
-                    <?php foreach (rows('SELECT b.*,k.nama kat FROM berita b JOIN kategori_berita k ON k.id=b.kategori_id ORDER BY headline DESC,tanggal DESC,id DESC LIMIT 3') as $b): ?>
+                    <?php
+                    $query_berita = '
+                        SELECT
+                            b.*,
+                            k.nama AS kat
+                        FROM berita b
+                        LEFT JOIN kategori_berita k
+                            ON k.id = b.kategori_id
+                        ORDER BY
+                            b.headline DESC,
+                            b.tanggal DESC,
+                            b.id DESC
+                        LIMIT 3
+                    ';
+                    foreach (rows($query_berita) as $b):
+                    ?>
+
                     <a href="berita.php?id=<?= $b['id'] ?>" class="news-card">
                         <?php if ($b['foto']): ?>
-                        <img src="assets/uploads/<?= e($b['foto']) ?>" alt="<?= e($b['judul']) ?>" class="news-img">
+                            <img src="assets/uploads/<?= e($b['foto']) ?>" alt="<?= e($b['judul']) ?>" class="news-img">
                         <?php else: ?>
-                        <div class="news-img-placeholder"></div>
+                            <div class="news-img-placeholder"></div>
                         <?php endif; ?>
+
                         <div class="news-content">
                             <span class="news-date">
                                 <i class="far fa-calendar-alt"></i> <?= e($b['tanggal']) ?>
@@ -184,7 +201,16 @@ if ($bn):?>
                     <a href="pengumuman.php" class="see-all">Lihat Semua <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="announcement-grid">
-                    <?php foreach (rows('SELECT * FROM agenda WHERE tanggal>=CURDATE() ORDER BY tanggal LIMIT 4') as $a): ?>
+                    <?php
+                    $query_pengumuman = '
+                        SELECT *
+                        FROM agenda
+                        ORDER BY tanggal ASC
+                        LIMIT 4
+                    ';
+
+                    foreach (rows($query_pengumuman) as $a):
+                    ?>
                     <div class="announcement-item">
                         <div class="ann-content">
                             <h5><?= e($a['judul']) ?></h5>
@@ -207,61 +233,6 @@ if ($bn):?>
                 <i class="fa fa-<?= $i ?>"></i>
                 <h3><?= number_format((int)($S[$k] ?? 0), 0, ',', '.') ?></h3>
                 <small><?= $l ?></small>
-            </div>
-        </div>
-        <?php endforeach; ?>
-    </div>
-
-    <h3 class="judul">Layanan Desa</h3>
-    <div class="row g-3">
-        <?php foreach (rows('SELECT * FROM layanan LIMIT 6') as $l): ?>
-        <div class="col-md-4">
-            <a href="masyarakat/pengajuan.php?id=<?= $l['id'] ?>" class="text-decoration-none">
-                <div class="card-desa bg-white p-3">
-                    <i class="fa fa-file-lines text-gold fa-lg"></i>
-                    <b class="text-hijau"><?= e($l['nama']) ?></b>
-                    <p class="small text-muted mb-0"><?= e($l['deskripsi']) ?></p>
-                </div>
-            </a>
-        </div>
-        <?php endforeach; ?>
-    </div>
-
-    <div class="text-center mt-3">
-        <a href="masyarakat/layanan.php" class="btn btn-hijau">Semua Layanan</a>
-        <a href="masyarakat/cek-status.php" class="btn btn-outline-success rounded-pill">Cek Status</a>
-    </div>
-
-    <h3 class="judul">Berita Terbaru</h3>
-    <div class="row g-3">
-        <?php foreach (rows('SELECT b.*,k.nama kat FROM berita b JOIN kategori_berita k ON k.id=b.kategori_id ORDER BY headline DESC,tanggal DESC,id DESC LIMIT 3') as $b): ?>
-        <div class="col-md-4">
-            <a href="berita.php?id=<?= $b['id'] ?>" class="text-decoration-none text-dark">
-                <div class="card-desa bg-white">
-                    <?php if ($b['foto']): ?>
-                    <img class="thumb" src="assets/uploads/<?= e($b['foto']) ?>">
-                    <?php else: ?>
-                    <div class="thumb"></div>
-                    <?php endif; ?>
-                    <div class="p-3">
-                        <span class="badge bg-success"><?= e($b['kat']) ?></span>
-                        <h6 class="mt-2"><?= e($b['judul']) ?></h6>
-                        <small class="text-muted"><?= e($b['tanggal']) ?></small>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <?php endforeach; ?>
-    </div>
-
-    <h3 class="judul">Agenda Desa</h3>
-    <div class="row g-3">
-        <?php foreach (rows('SELECT * FROM agenda WHERE tanggal>=CURDATE() ORDER BY tanggal LIMIT 4') as $a): ?>
-        <div class="col-md-3">
-            <div class="card-desa bg-white p-3">
-                <b class="text-hijau"><?= e($a['judul']) ?></b><br>
-                <small><i class="fa fa-calendar"></i> <?= e($a['tanggal']) ?><br>
-                <i class="fa fa-location-dot"></i> <?= e($a['lokasi']) ?></small>
             </div>
         </div>
         <?php endforeach; ?>

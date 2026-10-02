@@ -1,10 +1,11 @@
 /* Reset & Base Styles */
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
-:root { --primary-color: #0b5e46; --primary-light: #e8f5e9; --text-dark: #1f2937; --text-muted: #6b7280; --border-color: #f3f4f6; --bg-color: #f4f7f6; --white: #ffffff; }
+:root { --primary-color: #0b5e46; --primary-light: #e8f5e9; --text-dark: #1f2937; --text-muted: #6b7280; --border-color: #f3f4f6; --bg-color: #f4f7f6; --white: #ffffff; --h:#064e3b; --e:#059669; --g:#d4a017; }
 html { height: 100%; }
 body { background-color: var(--bg-color); color: var(--text-dark); padding-bottom: 70px; min-height:100vh; }
 a { text-decoration: none; color: inherit; }
 p { margin: 0; }
+.judul{color:var(--h);font-weight:700;border-left:5px solid var(--g);padding-left:12px;margin:2rem 0 1.2rem}
 
 /* Utility Classes */
 .desktop-only { display: none !important; }
@@ -51,6 +52,9 @@ p { margin: 0; }
 .sidebar-footer { padding: 24px; padding-bottom: 40px; }
 .btn-whatsapp { width: 100%; padding: 14px; background-color: #25D366; color: var(--white); border: none; border-radius: 25px; font-size: 15px; font-weight: 600; display: flex; justify-content: center; align-items: center; gap: 10px; cursor: pointer; }
 
+.desktop-nav { margin-left: auto; }
+.desktop-only-flex { display: flex !important; }
+
 /* --- Desktop Styles --- */
 @media (min-width: 992px) {
     .mobile-only { display: none !important; }
@@ -66,7 +70,7 @@ p { margin: 0; }
     .desktop-nav a { font-size: 14px; font-weight: 600; color: var(--text-muted); transition: color 0.2s; position: relative; }
     .desktop-nav a:hover, .desktop-nav a.active { color: var(--primary-color); }
     .desktop-nav a.active::after { content: ''; position: absolute; bottom: -18px; left: 0; width: 100%; height: 3px; background-color: var(--primary-color); border-radius: 3px 3px 0 0; }
-    .header-right { align-items: center; gap: 16px; }
+    .header-right { align-items: center; gap: 16px; margin-left: 20px; }
     .btn-icon { background: var(--bg-color); border: none; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text-dark); cursor: pointer; }
     .btn-login { background-color: var(--primary-color); color: var(--white); border: none; padding: 10px 20px; border-radius: 20px; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; cursor: pointer; }
 

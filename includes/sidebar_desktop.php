@@ -32,6 +32,10 @@
                 </a>
             </div>
         </div>
+        <a href="<?=$root?>data-desa.php" class="side-menu-item <?= $page == 'data-desa' ? 'active' : '' ?>">
+            <div><i class="fas fa-database icon-box"></i> Data Desa</div>
+            <i class="fas fa-chevron-right arrow"></i>
+        </a>
         <a href="<?=$root?>struktur.php" class="side-menu-item <?= $page == 'struktur' ? 'active' : '' ?>">
             <div><i class="fas fa-users icon-box"></i> Struktur Pemerintah Desa</div>
             <i class="fas fa-chevron-right arrow"></i>
@@ -44,8 +48,8 @@
             <div><i class="fas fa-bullhorn icon-box"></i> Pengumuman</div>
             <i class="fas fa-chevron-right arrow"></i>
         </a>
-        <a href="<?=$root?>pengaduan.php" class="side-menu-item <?= $page == 'pengaduan' ? 'active' : '' ?>">
-            <div><i class="fas fa-file-signature icon-box"></i> Pengaduan </div>
+        <a href="<?=$root?>masyarakat/layanan.php" class="side-menu-item <?= $page == 'layanan' ? 'active' : '' ?>">
+            <div><i class="fas fa-file-signature icon-box"></i> Pelayanan Online </div>
             <i class="fas fa-chevron-right arrow"></i>
         </a>
         <a href="<?=$root?>kontak.php" class="side-menu-item <?= $page == 'kontak' ? 'active' : '' ?>">

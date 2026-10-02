@@ -54,6 +54,10 @@
 .ann-date { font-size: 10px; color: var(--text-muted); margin-bottom: 4px; display: block; }
 .ann-content h5 { font-size: 13px; font-weight: 600; color: var(--primary-color); line-height: 1.4; }
 
+/* Pengaduan */
+.fab-aduan{position:fixed;right:20px;bottom:80px;z-index:99;background:var(--e);color:#fff;padding:.7rem 1.2rem;border-radius:14px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+.fab-aduan:hover{background:var(--h);color:#fff}
+
 /* --- Desktop Overrides --- */
 @media (min-width: 992px) {
     /* Hero Desktop */

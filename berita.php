@@ -17,20 +17,29 @@ $id = (int)($_GET['id'] ?? 0);
 
     <main class="content-center">
         <section class="content-section">
-            <?php if ($id && ($b = row('SELECT b.*, k.nama kat FROM berita b JOIN kategori_berita k ON k.id = b.kategori_id WHERE b.id = ?', [$id]))): ?>
-                <!-- Detail berita -->
-                <h2 class="judul mb-3"><?= e($b['judul']) ?></h2>
-                <p class="text-muted mb-2">
-                    <span class="badge bg-success"><?= e($b['kat']) ?></span>
-                    <?= e($b['tanggal']) ?> • <?= e($b['penulis']) ?>
-                </p>
-                <?php if ($b['foto']): ?>
-                    <img class="img-fluid rounded mb-3" src="assets/uploads/<?= e($b['foto']) ?>" alt="Foto Berita">
-                <?php endif; ?>
-                <div class="card-desa bg-white p-4">
-                    <?= nl2br(e($b['isi'])) ?>
-                </div>
-                <a href="berita.php" class="btn btn-hijau mt-3">Kembali</a>
+            <?php
+                if ($id && ($b = row(
+                'SELECT b.*, k.nama kat 
+                FROM berita b 
+                LEFT JOIN kategori_berita k ON k.id = b.kategori_id 
+                WHERE b.id = ?', [$id]
+                ))): 
+            ?>
+
+            <!-- Detail berita -->
+            <h2 class="judul mb-3"><?= e($b['judul']) ?></h2>
+            <p class="text-muted mb-2">
+                <span class="badge bg-success"><?= e($b['kat']) ?></span>
+                <?= e($b['tanggal']) ?> • <?= e($b['penulis']) ?>
+            </p>
+            
+            <?php if ($b['foto']): ?>
+                <img class="img-fluid rounded mb-3" src="assets/uploads/<?= e($b['foto']) ?>" alt="Foto Berita">
+            <?php endif; ?>
+            <div class="card-desa bg-white p-4">
+                <?= nl2br(e($b['isi'])) ?>
+            </div>
+            <a href="berita.php" class="btn btn-hijau mt-3">Kembali</a>
             <?php else: ?>
                 <!-- Daftar berita -->
                 <h2 class="judul mb-4">Berita Desa</h2>
@@ -46,7 +55,11 @@ $id = (int)($_GET['id'] ?? 0);
                 <div class="row g-3">
                     <?php
                     $k = (int)($_GET['k'] ?? 0);
-                    $query = 'SELECT b.*, k.nama kat FROM berita b JOIN kategori_berita k ON k.id = b.kategori_id WHERE (? = 0 OR b.kategori_id = ?) ORDER BY tanggal DESC, id DESC';
+                    $query = 'SELECT b.*, k.nama kat 
+                        FROM berita b 
+                        LEFT JOIN kategori_berita k ON k.id = b.kategori_id 
+                        WHERE (? = 0 OR b.kategori_id = ?) 
+                        ORDER BY b.tanggal DESC, b.id DESC';
                     foreach (rows($query, [$k, $k]) as $b): ?>
                         <div class="col-md-4">
                             <a class="text-decoration-none text-dark" href="berita.php?id=<?= $b['id'] ?>">

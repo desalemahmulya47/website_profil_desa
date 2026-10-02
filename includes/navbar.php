@@ -21,16 +21,11 @@ $page = $page ?? '';
     <nav class="desktop-nav desktop-only-flex">
         <a href="<?=$root?>index.php" class=<?= $page == 'beranda' ? 'active' : '' ?>>Beranda</a>
         <a href="<?=$root?>profil.php" class=<?= $page == 'profil' ? 'active' : '' ?>>Profil Desa</a>
-        <a href="<?=$root?>struktur.php" class=<?= $page == 'struktur' ? 'active' : '' ?>>Struktur</a>
-        <a href="<?=$root?>berita.php" class=<?= $page == 'berita' ? 'active' : '' ?>>Berita</a>
-        <a href="<?=$root?>pengumuman.php" class=<?= $page == 'pengumuman' ? 'active' : '' ?>>Pengumuman</a>
         <a href="<?=$root?>masyarakat/layanan.php" class=<?= $page == 'layanan' ? 'active' : '' ?>>Pelayanan Online</a>
-        <a href="<?=$root?>kontak.php" class=<?= $page == 'kontak' ? 'active' : '' ?>>Kontak</a>
     </nav>
 
     <div class="header-right desktop-only-flex">
-        <!-- <button class="btn-icon"><i class="fas fa-search"></i></button> -->
-         <a href="<?=$root?>login.php">
+        <a href="<?=$root?>login.php">
         <button class="btn-login"><i class="fas fa-user"></i> Login Admin</button>
         </a>
     </div>
@@ -66,6 +61,10 @@ $page = $page ?? '';
         <a href="<?=$root?>profil.php" class="sidebar-item">
             <i class="fas fa-user"></i>
             <span>Profil Desa</span>
+        </a>
+        <a href="<?=$root?>data-desa.php" class="sidebar-item">
+            <i class="fas fa-user"></i>
+            <span>Data Desa</span>
         </a>
         <a href="<?=$root?>struktur.php" class="sidebar-item">
             <i class="fas fa-users"></i>
@@ -113,7 +112,7 @@ $page = $page ?? '';
     </a>
     <a href="<?=$root?>berita.php" class="nav-item">
         <i class="fas fa-newspaper"></i>
-        <span>Berita</span>
+        <span>Layanan</span>
     </a>
     <a href="<?=$root?>menu.php" class="nav-item" id="bottomMenuBtn">
         <i class="fas fa-bars"></i>

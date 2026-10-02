@@ -20,9 +20,8 @@ $bagian = $_GET['bagian'] ?? 'sejarah';
     <main class="content-center">
         <section class="content-section">
             <h2 class="judul">Profil Desa <?= s('nama_desa') ?></h2>
-            <?php
-            $bagian = $_GET['bagian'] ?? 'sejarah';
 
+            <?php
             $sections = [
                 'sejarah'   => 'Sejarah Desa',
                 'visi-misi' => 'Visi & Misi',
